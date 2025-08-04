@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Transition } from '@headlessui/react';
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import ContactForm from "@/components/ContactForm";
 
 export default function CombinedPage() {
   return (
@@ -14,8 +15,9 @@ export default function CombinedPage() {
       <DesignShowcaseSection />
       <ServicesSection />
       <DigitalMarketingSection />
-      <ClientsCarousel />
+      {/* <ClientsCarousel /> */}
       <BlogPost />
+      <ContactForm />
       <Footer />
     </>
   );
@@ -53,7 +55,7 @@ function Navbar() {
               <button className="flex items-center hover:text-blue-600 transition">
                 Services <ChevronDown size={16} className="ml-1" />
               </button>
-              <div className="absolute hidden group-hover:block mt-2 w-40 bg-white shadow-lg rounded-md z-10">
+              <div className=" hidden group-hover:block mt-2 w-40 bg-white shadow-lg rounded-md z-10">
                 <Link href="/webdesign" className="block px-4 py-2 hover:bg-gray-300 transition">Web Design</Link>
                 <Link href="/seo" className="block px-4 py-2 hover:bg-gray-300 transition">SEO</Link>
                 <Link href="/sem" className="block px-4 py-2 hover:bg-gray-300 transition">SEM</Link>
@@ -61,11 +63,11 @@ function Navbar() {
               </div>
             </div>
 
-            <div className="relative group">
+            {/* <div className="relative group">
               <button className="flex items-center hover:text-blue-600 transition">
                 <Link href='/clints'>Our Clients </Link>
               </button>
-            </div>
+            </div> */}
 
             <Link href="/contact" className="hover:text-blue-600 transition">Contact Us</Link>
 
@@ -252,51 +254,43 @@ function DigitalMarketingSection() {
   const services = [
     {
       title: 'Website Design & Development',
-      description:
-      'High-performing, mobile-optimized websites built on platforms like WordPress, Webflow, and Shopify with a focus on conversion and scalability.',
-      link:'/webdesign',
+      link: '/webdesign',
+      description: 'High-performing, mobile-optimized websites built on platforms like WordPress, Webflow, and Shopify with a focus on conversion and scalability.',
     },
     {
       title: 'Search Engine Optimization (SEO)',
-      link:'/seo',
-      description:
-        'Technical, on-page, and off-page SEO for local and global visibility, including voice search and mobile optimization.',
+      link: '/seo',
+      description: 'Technical, on-page, and off-page SEO for local and global visibility, including voice search and mobile optimization.',
     },
     {
       title: 'Social Media Marketing',
-      link:'/socialmedia',
-      description:
-        'Create communities, drive engagement, and convert with integrated paid and organic strategies tailored to each platform.',
+      link: '/social-media',
+      description: 'Create communities, drive engagement, and convert with integrated paid and organic strategies tailored to each platform.',
     },
     {
       title: 'Paid Media & PPC Advertising',
-      link:'/advertising',
-      description:
-        'Maximize ROI with campaigns on Google, Meta, LinkedIn, and TikTok, powered by data and targeting precision.',
+      link: '/advertaising',
+      description: 'Maximize ROI with campaigns on Google, Meta, LinkedIn, and TikTok, powered by data and targeting precision.',
     },
     {
       title: 'Content Marketing & Strategy',
-      link:'/marketing',
-      description:
-        'Convert with blogs, emails, videos, and thought leadership that ranks, resonates, and scales.',
+      link: '/content-marketing',
+      description: 'Convert with blogs, emails, videos, and thought leadership that ranks, resonates, and scales.',
     },
     {
       title: 'Google My Business Optimization',
-      link:'/branding',
-      description:
-        'Capture local traffic with optimized GMB profiles, local SEO, and reputation management.',
+      link: '/branding',
+      description: 'Capture local traffic with optimized GMB profiles, local SEO, and reputation management.',
     },
     {
       title: 'Creative Logo Design & Branding',
-      link:'/creativity',
-      description:
-        'Build strong brand identities through logos, taglines, visual systems, and marketing collateral.',
+      link: '/creativity',
+      description: 'Build strong brand identities through logos, taglines, visual systems, and marketing collateral.',
     },
     {
       title: 'Video Marketing & Creative Production',
-      link:'/videomarketing',
-      description:
-        'Engage with brand videos, reels, 2D animation, and tutorials across platforms.',
+      link: '/video-marketing',
+      description: 'Engage with brand videos, reels, 2D animation, and tutorials across platforms.',
     },
   ];
 
@@ -322,24 +316,26 @@ function DigitalMarketingSection() {
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {services.map((service, index) => (
-          <motion.div
-            key={index}
-            className="bg-white p-6 rounded-2xl shadow-xl border border-blue-100 hover:shadow-2xl hover:border-purple-300 transition-all duration-300 cursor-pointer hover:scale-105"
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-          >
-            <h2 className="text-xl font-semibold text-blue-800 mb-2">
-              {service.title}
-            </h2>
-            <p className="text-gray-600 text-sm leading-relaxed">
-              {service.description}
-            </p>
-          </motion.div>
+          <Link href={service.link} key={index} passHref>
+            <motion.div
+              className="bg-white p-6 rounded-2xl shadow-xl border border-blue-100 hover:shadow-2xl hover:border-purple-300 transition-all duration-300 cursor-pointer hover:scale-105 h-full"
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <h2 className="text-xl font-semibold text-blue-800 mb-2">
+                {service.title}
+              </h2>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                {service.description}
+              </p>
+            </motion.div>
+          </Link>
         ))}
       </div>
 
+      {/* Call to Action Section */}
       <div className="mt-20 text-center">
         <motion.h2
           className="text-3xl font-bold text-purple-800"
@@ -347,7 +343,7 @@ function DigitalMarketingSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Let&apos;s Work Together
+          Let's Work Together
         </motion.h2>
         <motion.p
           className="mt-3 text-gray-700 text-sm md:text-base"
@@ -373,165 +369,165 @@ function DigitalMarketingSection() {
   );
 }
 
-const ClientsCarousel = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [isHovered, setIsHovered] = useState(false);
-  const [direction, setDirection] = useState<'left' | 'right'>('right');
-  const [activeIndex, setActiveIndex] = useState(0);
+// const ClientsCarousel = () => {
+//   const scrollRef = useRef<HTMLDivElement>(null);
+//   const [isHovered, setIsHovered] = useState(false);
+//   const [direction, setDirection] = useState<'left' | 'right'>('right');
+//   const [activeIndex, setActiveIndex] = useState(0);
 
-  const logos = [
-    { src: '/clints/apollo.png', alt: 'Apollo' },
-    { src: '/clints/nu.png', alt: 'Nu' },
-    { src: '/clints/mindful.png', alt: 'Mindful' },
-    { src: '/clints/curls.png', alt: 'Curls' },
-    { src: '/clints/peps.png', alt: 'Peps' },
-    { src: '/clints/telehealth.png', alt: 'Telehealth' },
-    { src: '/clints/apollo.png', alt: 'Apollo' },
-    { src: '/clints/nu.png', alt: 'Nu' },
-    { src: '/clints/mindful.png', alt: 'Mindful' },
-    { src: '/clints/curls.png', alt: 'Curls' },
-    { src: '/clints/peps.png', alt: 'Peps' },
-    { src: '/clints/telehealth.png', alt: 'Telehealth' }
-  ];
+//   const logos = [
+//     { src: '/clints/apollo.png', alt: 'Apollo' },
+//     { src: '/clints/nu.png', alt: 'Nu' },
+//     { src: '/clints/mindful.png', alt: 'Mindful' },
+//     { src: '/clints/curls.png', alt: 'Curls' },
+//     { src: '/clints/peps.png', alt: 'Peps' },
+//     { src: '/clints/telehealth.png', alt: 'Telehealth' },
+//     { src: '/clints/apollo.png', alt: 'Apollo' },
+//     { src: '/clints/nu.png', alt: 'Nu' },
+//     { src: '/clints/mindful.png', alt: 'Mindful' },
+//     { src: '/clints/curls.png', alt: 'Curls' },
+//     { src: '/clints/peps.png', alt: 'Peps' },
+//     { src: '/clints/telehealth.png', alt: 'Telehealth' }
+//   ];
 
-  const scroll = (dir: 'left' | 'right') => {
-    if (!scrollRef.current) return;
+//   const scroll = (dir: 'left' | 'right') => {
+//     if (!scrollRef.current) return;
     
-    setDirection(dir);
-    const scrollAmount = dir === 'left' ? -300 : 300;
-    scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+//     setDirection(dir);
+//     const scrollAmount = dir === 'left' ? -300 : 300;
+//     scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     
-    setActiveIndex(prev => {
-      return dir === 'right' 
-        ? (prev + 1) % (logos.length / 2)
-        : (prev - 1 + (logos.length / 2)) % (logos.length / 2);
-    });
-  };
+//     setActiveIndex(prev => {
+//       return dir === 'right' 
+//         ? (prev + 1) % (logos.length / 2)
+//         : (prev - 1 + (logos.length / 2)) % (logos.length / 2);
+//     });
+//   };
 
-  useEffect(() => {
-    if (isHovered) return;
+//   useEffect(() => {
+//     if (isHovered) return;
 
-    const autoScroll = () => {
-      if (!scrollRef.current) return;
+//     const autoScroll = () => {
+//       if (!scrollRef.current) return;
 
-      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-      const isNearEnd = scrollLeft >= scrollWidth - clientWidth - 100;
+//       const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+//       const isNearEnd = scrollLeft >= scrollWidth - clientWidth - 100;
 
-      if (isNearEnd) {
-        scrollRef.current.scrollTo({ left: 0, behavior: 'instant' });
-        setActiveIndex(0);
-      } else {
-        scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' });
-        setActiveIndex(prev => (prev + 1) % (logos.length / 2));
-      }
-    };
+//       if (isNearEnd) {
+//         scrollRef.current.scrollTo({ left: 0, behavior: 'instant' });
+//         setActiveIndex(0);
+//       } else {
+//         scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' });
+//         setActiveIndex(prev => (prev + 1) % (logos.length / 2));
+//       }
+//     };
 
-    const interval = setInterval(autoScroll, 2000);
-    return () => clearInterval(interval);
-  }, [isHovered, logos.length]);
+//     const interval = setInterval(autoScroll, 2000);
+//     return () => clearInterval(interval);
+//   }, [isHovered, logos.length]);
 
-  return (
-    <section className="bg-gradient-to-b from-blue-50 to-white py-12 px-4 sm:px-6 lg:px-8">
-      <motion.h2 
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-3xl font-bold text-center text-blue-700 mb-12 tracking-wide"
-      >
-        TRUSTED BY INDUSTRY LEADERS
-      </motion.h2>
+//   return (
+//     <section className="bg-gradient-to-b from-blue-50 to-white py-12 px-4 sm:px-6 lg:px-8">
+//       <motion.h2 
+//         initial={{ opacity: 0, y: -20 }}
+//         whileInView={{ opacity: 1, y: 0 }}
+//         viewport={{ once: true }}
+//         transition={{ duration: 0.6 }}
+//         className="text-3xl font-bold text-center text-blue-700 mb-12 tracking-wide"
+//       >
+//         TRUSTED BY INDUSTRY LEADERS
+//       </motion.h2>
 
-      <div 
-        className="relative max-w-7xl mx-auto"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        <AnimatePresence>
-          <motion.button
-            key="left-arrow"
-            initial={{ opacity: 0.5, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0 }}
-            whileHover={{ scale: 1.2, backgroundColor: '#2563eb' }}
-            onClick={() => scroll('left')}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-blue-600 p-3 rounded-full shadow-lg hover:shadow-xl transition-all"
-            aria-label="Previous client"
-          >
-            <ChevronLeft className="text-white w-6 h-6" />
-          </motion.button>
-        </AnimatePresence>
+//       <div 
+//         className="relative max-w-7xl mx-auto"
+//         onMouseEnter={() => setIsHovered(true)}
+//         onMouseLeave={() => setIsHovered(false)}
+//       >
+//         <AnimatePresence>
+//           <motion.button
+//             key="left-arrow"
+//             initial={{ opacity: 0.5, x: -10 }}
+//             animate={{ opacity: 1, x: 0 }}
+//             exit={{ opacity: 0 }}
+//             whileHover={{ scale: 1.2, backgroundColor: '#2563eb' }}
+//             onClick={() => scroll('left')}
+//             className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-blue-600 p-3 rounded-full shadow-lg hover:shadow-xl transition-all"
+//             aria-label="Previous client"
+//           >
+//             <ChevronLeft className="text-white w-6 h-6" />
+//           </motion.button>
+//         </AnimatePresence>
 
-        <div
-          ref={scrollRef}
-          className="flex overflow-x-auto gap-8 md:gap-12 px-12 scroll-smooth scrollbar-hide"
-          aria-live="polite"
-        >
-          {logos.map((logo, index) => (
-            <motion.div
-              key={`${logo.alt}-${index}`}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-              whileHover={{ scale: 1.1, y: -5 }}
-              className="flex-shrink-0 w-40 h-24 md:w-52 md:h-32 flex items-center justify-center bg-white rounded-xl p-4 shadow-md hover:shadow-lg transition-all"
-            >
-              <Image
-                src={logo.src}
-                alt={logo.alt}
-                width={208}
-                height={128}
-                className="max-h-full max-w-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                loading="lazy"
-                draggable="false"
-              />
-            </motion.div>
-          ))}
-        </div>
+//         <div
+//           ref={scrollRef}
+//           className="flex overflow-x-auto gap-8 md:gap-12 px-12 scroll-smooth scrollbar-hide"
+//           aria-live="polite"
+//         >
+//           {logos.map((logo, index) => (
+//             <motion.div
+//               key={`${logo.alt}-${index}`}
+//               initial={{ opacity: 0, scale: 0.9 }}
+//               whileInView={{ opacity: 1, scale: 1 }}
+//               viewport={{ once: true }}
+//               transition={{ duration: 0.5, delay: index * 0.05 }}
+//               whileHover={{ scale: 1.1, y: -5 }}
+//               className="flex-shrink-0 w-40 h-24 md:w-52 md:h-32 flex items-center justify-center bg-white rounded-xl p-4 shadow-md hover:shadow-lg transition-all"
+//             >
+//               <Image
+//                 src={logo.src}
+//                 alt={logo.alt}
+//                 width={208}
+//                 height={128}
+//                 className="max-h-full max-w-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
+//                 loading="lazy"
+//                 draggable="false"
+//               />
+//             </motion.div>
+//           ))}
+//         </div>
 
-        <AnimatePresence>
-          <motion.button
-            key="right-arrow"
-            initial={{ opacity: 0.5, x: 10 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0 }}
-            whileHover={{ scale: 1.2, backgroundColor: '#2563eb' }}
-            onClick={() => scroll('right')}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-blue-600 p-3 rounded-full shadow-lg hover:shadow-xl transition-all"
-            aria-label="Next client"
-          >
-            <ChevronRight className="text-white w-6 h-6" />
-          </motion.button>
-        </AnimatePresence>
-      </div>
+//         <AnimatePresence>
+//           <motion.button
+//             key="right-arrow"
+//             initial={{ opacity: 0.5, x: 10 }}
+//             animate={{ opacity: 1, x: 0 }}
+//             exit={{ opacity: 0 }}
+//             whileHover={{ scale: 1.2, backgroundColor: '#2563eb' }}
+//             onClick={() => scroll('right')}
+//             className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-blue-600 p-3 rounded-full shadow-lg hover:shadow-xl transition-all"
+//             aria-label="Next client"
+//           >
+//             <ChevronRight className="text-white w-6 h-6" />
+//           </motion.button>
+//         </AnimatePresence>
+//       </div>
 
-      <div className="flex justify-center mt-8 gap-2">
-        {Array.from({ length: logos.length / 2 }).map((_, index) => (
-          <motion.button
-            key={index}
-            animate={{
-              backgroundColor: index === activeIndex ? '#2563eb' : '#93c5fd',
-              scale: index === activeIndex ? 1.2 : 1
-            }}
-            transition={{ duration: 0.3 }}
-            className="w-3 h-3 rounded-full focus:outline-none"
-            onClick={() => {
-              if (scrollRef.current) {
-                scrollRef.current.scrollTo({
-                  left: index * 300,
-                  behavior: 'smooth'
-                });
-                setActiveIndex(index);
-              }
-            }}
-            aria-label={`Go to client ${index + 1}`}
-          />
-        ))}
-      </div>
-    </section>
-  );
-};
+//       <div className="flex justify-center mt-8 gap-2">
+//         {Array.from({ length: logos.length / 2 }).map((_, index) => (
+//           <motion.button
+//             key={index}
+//             animate={{
+//               backgroundColor: index === activeIndex ? '#2563eb' : '#93c5fd',
+//               scale: index === activeIndex ? 1.2 : 1
+//             }}
+//             transition={{ duration: 0.3 }}
+//             className="w-3 h-3 rounded-full focus:outline-none"
+//             onClick={() => {
+//               if (scrollRef.current) {
+//                 scrollRef.current.scrollTo({
+//                   left: index * 300,
+//                   behavior: 'smooth'
+//                 });
+//                 setActiveIndex(index);
+//               }
+//             }}
+//             aria-label={`Go to client ${index + 1}`}
+//           />
+//         ))}
+//       </div>
+//     </section>
+//   );
+// };
 
 function DesignShowcaseSection() {
   const [current, setCurrent] = useState(0);
@@ -774,7 +770,6 @@ function BlogPost() {
     </div>
   );
 }
-
 function Footer() {
   return (
     <footer className="bg-[#0d0d0d] text-white py-10 px-6 md:px-20">

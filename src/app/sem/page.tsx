@@ -46,19 +46,13 @@ function Navbar() {
                 leaveFrom="transform opacity-100 translate-y-0"
                 leaveTo="transform opacity-0 -translate-y-2"
               >
-                <div className="absolute hidden group-hover:block mt-2 w-40 bg-white shadow-lg rounded-md z-10">
+                <div className=" hidden group-hover:block mt-2 w-40 bg-white shadow-lg rounded-md z-10">
                   <Link href="/webdesign" className="block px-4 py-2 hover:bg-gray-300 transition">Web Design</Link>
                   <Link href="/seo" className="block px-4 py-2 hover:bg-gray-300 transition">SEO</Link>
                   <Link href="/sem" className="block px-4 py-2 hover:bg-gray-300 transition">SEM</Link>
                   <Link href="/social-media" className="block px-4 py-2 hover:bg-gray-300 transition">Social Media</Link>
                 </div>
               </Transition>
-            </div>
-
-            <div className="relative group">
-              <Link href="/" className="flex items-center hover:text-blue-600 transition">
-                Our Clients
-              </Link>
             </div>
 
             <Link href="/contact" className="hover:text-blue-600 transition">Contact Us</Link>
@@ -349,7 +343,7 @@ export default function SeoServicesSection() {
           >
             <div className="w-full overflow-hidden rounded-lg shadow-md">
               <Image
-                src="/icons/seo.png"
+                src="/icons/sem.png"
                 alt="SEO Services in Bangalore"
                 width={600}
                 height={400}

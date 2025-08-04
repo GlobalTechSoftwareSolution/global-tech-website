@@ -58,7 +58,7 @@ function Navbar() {
                 leaveFrom="transform opacity-100 translate-y-0"
                 leaveTo="transform opacity-0 -translate-y-2"
               >
-                <div className="absolute hidden group-hover:block mt-2 w-40 bg-white shadow-lg rounded-md z-10">
+                <div className=" hidden group-hover:block mt-2 w-40 bg-white shadow-lg rounded-md z-10">
                   <Link href="/webdesign" className="block px-4 py-2 hover:bg-gray-300 transition">Web Design</Link>
                   <Link href="/seo" className="block px-4 py-2 hover:bg-gray-300 transition">SEO</Link>
                   <Link href="/sem" className="block px-4 py-2 hover:bg-gray-300 transition">SEM</Link>
@@ -67,11 +67,11 @@ function Navbar() {
               </Transition>
             </div>
 
-            <div className="relative group">
+            {/* <div className="relative group">
               <button className="flex items-center hover:text-blue-600 transition">
                 Our Clients 
               </button>
-            </div>
+            </div> */}
 
             <Link href="/contact" className="hover:text-blue-600 transition">Contact Us</Link>
 
@@ -106,7 +106,7 @@ function Navbar() {
         leave="transition ease-in duration-75"
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
-        className="md:hidden"
+        // className="md:hidden"
       >
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
           <Link href="/" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Home</Link>

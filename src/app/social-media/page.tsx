@@ -40,7 +40,7 @@ function Navbar() {
                 leaveFrom="transform opacity-100 translate-y-0"
                 leaveTo="transform opacity-0 -translate-y-2"
               >
-                <div className="absolute hidden group-hover:block mt-2 w-40 bg-white shadow-lg rounded-md z-10">
+                <div className=" hidden group-hover:block mt-2 w-40 bg-white shadow-lg rounded-md z-10">
                   <Link href="/webdesign" className="block px-4 py-2 hover:bg-gray-300 transition">Web Design</Link>
                   <Link href="/seo" className="block px-4 py-2 hover:bg-gray-300 transition">SEO</Link>
                   <Link href="/sem" className="block px-4 py-2 hover:bg-gray-300 transition">SEM</Link>
@@ -49,26 +49,7 @@ function Navbar() {
               </Transition>
             </div>
 
-            <div className="relative group">
-              <button className="flex items-center hover:text-blue-600 transition">
-                Our Clients <ChevronDown size={16} className="ml-1" />
-              </button>
-              <Transition
-                show={true}
-                enter="transition ease-out duration-200"
-                enterFrom="transform opacity-0 -translate-y-2"
-                enterTo="transform opacity-100 translate-y-0"
-                leave="transition ease-in duration-150"
-                leaveFrom="transform opacity-100 translate-y-0"
-                leaveTo="transform opacity-0 -translate-y-2"
-              >
-                <div className="absolute hidden group-hover:block mt-2 w-40 bg-white shadow-lg rounded-md z-10">
-                  <Link href="/branding" className="block px-4 py-2 hover:bg-gray-300 transition">Branding</Link>
-                  <Link href="/apollo-hospitl" className="block px-4 py-2 hover:bg-gray-300 transition">Apollo Hospital</Link>
-                  <Link href="/mindfull" className="block px-4 py-2 hover:bg-gray-300 transition">Mindful TMS</Link>
-                </div>
-              </Transition>
-            </div>
+            
 
             <Link href="/contact" className="hover:text-blue-600 transition">Contact Us</Link>
 

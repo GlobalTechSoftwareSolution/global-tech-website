@@ -4,59 +4,249 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ChevronDown } from 'react-feather';
+import { Transition } from '@headlessui/react';
 
-export default function SEOAgencyBangalore() {
+function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* Navbar */}
-      <nav className="bg-white shadow-md py-4 px-6 md:px-20 sticky top-0 z-50">
-        <div className="flex justify-between items-center">
-          <Link href="/" className="flex items-center">
-            <Image
-              src="/logo.png" // Replace with your logo path
-              alt="SEO Agency Logo"
-              width={40}
-              height={40}
-              className="mr-2"
-            />
-            <span className="text-xl font-bold text-blue-800">SEO Agency Bangalore</span>
-          </Link>
-          
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
-            <Link href="/" className="text-gray-700 hover:text-blue-600 transition">Home</Link>
-            <Link href="/services" className="text-gray-700 hover:text-blue-600 transition">Services</Link>
-            <Link href="/seo" className="text-blue-600 font-medium">SEO</Link>
-            <Link href="/about" className="text-gray-700 hover:text-blue-600 transition">About</Link>
-            <Link href="/contact" className="text-gray-700 hover:text-blue-600 transition">Contact</Link>
+    <nav className="bg-white shadow-md sticky top-0 z-50 transition duration-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16 items-center">
+          {/* Logo */}
+          <div className="flex-shrink-0 flex items-center space-x-2 ml-5">
+            <Link href="/">
+              <div className="flex items-center space-x-2 cursor-pointer">
+                <img
+                  src="/logo/Global.jpg"
+                  alt="Logo"
+                  className="h-16 mb-5 mt-5 ml-0 rounded-full shadow z-50"
+                />
+                <span className="text-xl font-bold text-blue-700 leading-tight">
+                  Global Tech <br /> Software Solutions
+                </span>
+              </div>
+            </Link>
+          </div>
+        
+          <div className="hidden md:flex items-center space-x-6 text-gray-700 font-medium">
+            <Link href="/" className="hover:text-blue-600 transition">Home</Link>
+            <Link href="/about" className="hover:text-blue-600 transition">About Us</Link>
+
+            <div className="relative group">
+              <button className="flex items-center hover:text-blue-600 transition">
+                Services <ChevronDown size={16} className="ml-1" />
+              </button>
+              <Transition
+                show={true}
+                enter="transition ease-out duration-200"
+                enterFrom="transform opacity-0 -translate-y-2"
+                enterTo="transform opacity-100 translate-y-0"
+                leave="transition ease-in duration-150"
+                leaveFrom="transform opacity-100 translate-y-0"
+                leaveTo="transform opacity-0 -translate-y-2"
+              >
+                <div className=" hidden group-hover:block mt-2 w-40 bg-white shadow-lg rounded-md z-10">
+                  <Link href="/webdesign" className="block px-4 py-2 hover:bg-gray-300 transition">Web Design</Link>
+                  <Link href="/seo" className="block px-4 py-2 hover:bg-gray-300 transition">SEO</Link>
+                  <Link href="/sem" className="block px-4 py-2 hover:bg-gray-300 transition">SEM</Link>
+                  <Link href="/social-media" className="block px-4 py-2 hover:bg-gray-300 transition">Social Media</Link>
+                </div>
+              </Transition>
+            </div>
+
+            {/* <Link href="/clients" className="hover:text-blue-600 transition">Our Clients</Link> */}
+            <Link href="/contact" className="hover:text-blue-600 transition">Contact Us</Link>
+
+            <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200">
+              📞
+            </button>
+            <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200">
+              📋 
+            </button>
           </div>
 
-          {/* Mobile menu button */}
-          <button 
-            className="md:hidden text-gray-700"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
+          <div className="md:hidden">
+            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="transition transform hover:scale-110">
+              <svg className="h-6 w-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {mobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <Transition
+        show={mobileMenuOpen}
+        enter="transition ease-out duration-100"
+        enterFrom="transform opacity-0 scale-95"
+        enterTo="transform opacity-100 scale-100"
+        leave="transition ease-in duration-75"
+        leaveFrom="transform opacity-100 scale-100"
+        leaveTo="transform opacity-0 scale-95"
+      >
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
+          <Link href="/" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Home</Link>
+          <Link href="/about" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">About Us</Link>
+          
+          <div>
+            <button 
+              onClick={() => setServicesOpen(!servicesOpen)}
+              className="flex justify-between w-full px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50"
+            >
+              Services
+              <ChevronDown size={16} className={`ml-1 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
+            </button>
+            <Transition
+              show={servicesOpen}
+              enter="transition ease-out duration-100"
+              enterFrom="transform opacity-0 scale-95"
+              enterTo="transform opacity-100 scale-100"
+              leave="transition ease-in duration-75"
+              leaveFrom="transform opacity-100 scale-100"
+              leaveTo="transform opacity-0 scale-95"
+            >
+              <div className="pl-4 space-y-1">
+                <Link href="/webdesign" className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-600 hover:bg-gray-50">Web Design</Link>
+                <Link href="/seo" className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-600 hover:bg-gray-50">SEO</Link>
+                <Link href="/sem" className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-600 hover:bg-gray-50">SEM</Link>
+                <Link href="/social-media" className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-600 hover:bg-gray-50">Social Media</Link>
+              </div>
+            </Transition>
+          </div>
+
+          <Link href="/clients" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Our Clients</Link>
+          <Link href="/contact" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Contact Us</Link>
+          
+          <div className="flex space-x-2 pt-2">
+            <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200 w-full">
+              📞 Call Us
+            </button>
+            <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200 w-full">
+              📋 Get Quote
+            </button>
+          </div>
+        </div>
+      </Transition>
+    </nav>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="bg-[#0d0d0d] text-white py-10 px-6 md:px-20">
+      <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 border-b border-gray-700 pb-10">
+        <div>
+          <Image
+            src="/logo/Global.jpg"
+            alt="logo"
+            width={64}
+            height={64}
+            className="h-16 mb-4 rounded-full shadow z-50"
+          />
+          <h3 className="font-semibold text-lg mb-4 uppercase leading-relaxed">
+            GLOBAL TECH SOFTWARE SOLUTION
+            <br />
+            <p className="text-center text-xs md:text-sm font-medium text-gray-400 italic tracking-wide">
+              "MORE THAN A SERVICE - A SOLUTION"
+            </p>
+          </h3>
+          <div className="space-y-3 text-sm text-gray-300">
+            <div className="flex items-center gap-2">
+              <Image src="/icons/phone.png" alt="Phone" width={20} height={20} />
+              <a href="tel:+918495862494" className="hover:text-white">
+                +91-8495862494
+              </a>
+            </div>
+            <div className="flex items-center gap-2">
+              <Image src="/icons/email.png" alt="Email" width={20} height={20} />
+              <a
+                href="mailto:Tech@globaltechsoftwaresolutions.com"
+                className="hover:text-white"
+              >
+                Tech@globaltechsoftwaresolutions.com
+              </a>
+            </div>
+            <div className="flex items-start gap-2">
+              <Image src="/icons/location.png" alt="Location" width={20} height={20} className="mt-1" />
+              <span>
+                No 10c, Gaduniya Complex Ramaiah Layout,
+                <br />
+                Vidyaranyapura, Bangalore - 560097
+              </span>
+            </div>
+          </div>
         </div>
 
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden mt-4 space-y-2 pb-2">
-            <Link href="/" className="block py-2 px-4 text-gray-700 hover:bg-blue-50 rounded">Home</Link>
-            <Link href="/services" className="block py-2 px-4 text-gray-700 hover:bg-blue-50 rounded">Services</Link>
-            <Link href="/seo" className="block py-2 px-4 text-blue-600 bg-blue-50 rounded">SEO</Link>
-            <Link href="/about" className="block py-2 px-4 text-gray-700 hover:bg-blue-50 rounded">About</Link>
-            <Link href="/contact" className="block py-2 px-4 text-gray-700 hover:bg-blue-50 rounded">Contact</Link>
-          </div>
-        )}
-      </nav>
+        <div>
+          <h4 className="text-lg font-bold text-white mb-4 uppercase">Pages</h4>
+          <ul className="space-y-2 text-gray-300">
+            <li>
+              <Link href="/" className="hover:text-white">Home</Link>
+            </li>
+            <li>
+              <Link href="/about" className="hover:text-white">About</Link>
+            </li>
+            <li>
+              <Link href="/services" className="hover:text-white">Services</Link>
+            </li>
+            <li>
+              <Link href="/blog" className="hover:text-white">Blog</Link>
+            </li>
+            <li>
+              <Link href="/contact" className="hover:text-white">Contact</Link>
+            </li>
+          </ul>
+        </div>
 
-      {/* Your existing content */}
+        <div>
+          <h4 className="text-lg font-bold text-white mb-4 uppercase">Work Hours</h4>
+          <div className="flex items-center gap-2 text-gray-300 mb-2">
+            <Image src="/icons/time.png" alt="Clock" width={20} height={20} />
+            <span>Mon–Sat 10:00 AM–06:00 PM</span>
+          </div>
+          <p className="text-gray-400 mb-4">
+            Visit our office to get a free consultation
+          </p>
+          <Link
+            href="/contact"
+            className="inline-block bg-orange-600 hover:bg-orange-700 text-white py-2 px-4 rounded"
+          >
+            CLICK HERE
+          </Link>
+        </div>
+      </div>
+
+      <Link
+        href="https://wa.me/918495862494"
+        className="fixed bottom-5 right-5 rounded-full shadow-lg z-50"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Image
+          src="/logo/whatsapp.png"
+          alt="WhatsApp"
+          width={48}
+          height={48}
+        />
+      </Link>
+    </footer>
+  );
+}
+
+export default function SEOAgencyBangalore() {
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+
+      {/* Main Content */}
       <section className="bg-gradient-to-br from-white via-blue-50 to-purple-100 py-16 px-6 md:px-24 flex-grow">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -78,9 +268,11 @@ export default function SEOAgencyBangalore() {
           transition={{ duration: 0.7 }}
           className="max-w-4xl mx-auto mb-10"
         >
-          <img
-            src="/seo-services-banner.jpg" // Replace this with your actual image path
+          <Image
+            src="/icons/branding.png"
             alt="SEO Strategy in Bangalore"
+            width={800}
+            height={450}
             className="w-full rounded-xl shadow-md"
           />
         </motion.div>
@@ -145,51 +337,7 @@ export default function SEOAgencyBangalore() {
         </motion.div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 px-6 md:px-20">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
-          <div>
-            <h3 className="text-xl font-bold mb-4">SEO Agency Bangalore</h3>
-            <p className="text-gray-400">
-              Helping businesses grow through strategic digital marketing solutions since 2015.
-            </p>
-          </div>
-          
-          <div>
-            <h4 className="font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              <li><Link href="/" className="text-gray-400 hover:text-white transition">Home</Link></li>
-              <li><Link href="/services" className="text-gray-400 hover:text-white transition">Services</Link></li>
-              <li><Link href="/seo" className="text-gray-400 hover:text-white transition">SEO Services</Link></li>
-              <li><Link href="/about" className="text-gray-400 hover:text-white transition">About Us</Link></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="font-semibold mb-4">Our Services</h4>
-            <ul className="space-y-2">
-              <li><Link href="#" className="text-gray-400 hover:text-white transition">SEO Optimization</Link></li>
-              <li><Link href="#" className="text-gray-400 hover:text-white transition">PPC Advertising</Link></li>
-              <li><Link href="#" className="text-gray-400 hover:text-white transition">Social Media Marketing</Link></li>
-              <li><Link href="#" className="text-gray-400 hover:text-white transition">Content Marketing</Link></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="font-semibold mb-4">Contact Us</h4>
-            <address className="text-gray-400 not-italic">
-              <p>123 MG Road</p>
-              <p>Bangalore, Karnataka 560001</p>
-              <p className="mt-2">Email: info@seoagencybangalore.com</p>
-              <p>Phone: +91 9876543210</p>
-            </address>
-          </div>
-        </div>
-        
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>© {new Date().getFullYear()} SEO Agency Bangalore. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

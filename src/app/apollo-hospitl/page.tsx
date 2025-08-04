@@ -31,8 +31,8 @@ function Navbar() {
             <Link href="/about" className="hover:text-blue-600 transition">About Us</Link>
 
             <div className="relative group">
-              <button className="flex items-center hover:text-blue-600 transition">
-                Services <ChevronDown size={16} className="ml-1" />
+              <button className="flex items-center hover:text-blue-600 transition  ">
+                Services  <ChevronDown size={16} className="ml-1" />
               </button>
               <Transition
                 show={true}
@@ -43,7 +43,7 @@ function Navbar() {
                 leaveFrom="transform opacity-100 translate-y-0"
                 leaveTo="transform opacity-0 -translate-y-2"
               >
-                <div className="absolute hidden group-hover:block mt-2 w-48 bg-white shadow-lg rounded-md z-10">
+                <div className=" group-hover:block mt-2 w-48 bg-white shadow-lg rounded-md z-10">
                   <Link href="/web-development" className="block px-4 py-2 hover:bg-gray-100 transition">Web Development</Link>
                   <Link href="/digital-marketing" className="block px-4 py-2 hover:bg-gray-100 transition">Digital Marketing</Link>
                   <Link href="/seo" className="block px-4 py-2 hover:bg-gray-100 transition">SEO Services</Link>
@@ -52,7 +52,7 @@ function Navbar() {
               </Transition>
             </div>
 
-            <Link href="/clients" className="text-blue-600 font-medium">Our Clients</Link>
+            {/* <Link href="/clients" className="text-blue-600 font-medium">Our Clients</Link> */}
             <Link href="/contact" className="hover:text-blue-600 transition">Contact Us</Link>
 
             <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium transition duration-200">
