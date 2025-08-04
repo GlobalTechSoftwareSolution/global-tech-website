@@ -57,12 +57,12 @@ function Navbar() {
 
             <Link href="/contact" className="hover:text-blue-600 transition">Contact Us</Link>
 
-            <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200">
+            {/* <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200">
               📞
             </button>
             <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200">
               📋 
-            </button>
+            </button> */}
           </div>
 
           <div className="md:hidden">
@@ -126,14 +126,14 @@ function Navbar() {
 
           <Link href="/contact" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Contact Us</Link>
           
-          <div className="flex space-x-2 pt-2">
+          {/* <div className="flex space-x-2 pt-2">
             <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200 w-full">
               📞 Call Us
             </button>
             <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200 w-full">
               📋 Get Quote
             </button>
-          </div>
+          </div> */}
         </div>
       </Transition>
     </nav>
@@ -162,8 +162,8 @@ function Footer() {
           <div className="space-y-3 text-sm text-gray-300">
             <div className="flex items-center gap-2">
               <Image src="/icons/phone.png" alt="Phone" width={20} height={20} />
-              <a href="tel:+918495862494" className="hover:text-white">
-                +91-8495862494
+              <a href="tel:+919844281875" className="hover:text-white">
+                +91-9844281875
               </a>
             </div>
             <div className="flex items-center gap-2">

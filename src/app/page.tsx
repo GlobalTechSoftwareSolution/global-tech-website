@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { Transition } from '@headlessui/react';
@@ -71,12 +71,12 @@ function Navbar() {
 
             <Link href="/contact" className="hover:text-blue-600 transition">Contact Us</Link>
 
-            <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200">
+            {/* <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200">
               📞
             </button>
             <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200">
               📋
-            </button>
+            </button> */}
           </div>
 
           {/* Hamburger Icon */}
@@ -122,14 +122,14 @@ function Navbar() {
 
             <Link href="/contact" className="block hover:text-blue-600">Contact Us</Link>
 
-            <div className="flex space-x-2 pt-2">
+            {/* <div className="flex space-x-2 pt-2">
               <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200">
                 📞
               </button>
               <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200">
                 📋
               </button>
-            </div>
+            </div> */}
           </div>
         )}
       </div>
@@ -529,15 +529,31 @@ function DigitalMarketingSection() {
 //   );
 // };
 
+
+interface Slide {
+  id: number;
+  headingTop: string;
+  headingMain: string;
+  description: string;
+  image1: string;
+  ctaPrimary: string;
+  ctaSecondary: string;
+}
+
 function DesignShowcaseSection() {
   const [current, setCurrent] = useState(0);
-  const slides = [
+  const [autoPlay, setAutoPlay] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const slides: Slide[] = [
     {
       id: 1,
       headingTop: 'Designs That Inspire',
       headingMain: 'Creativity That Speaks',
       description: 'Bringing Your Ideas to Life with Our Stunning Designs',
       image1: '/slide/slide1.png',
+      ctaPrimary: 'View Portfolio',
+      ctaSecondary: 'Our Process'
     },
     {
       id: 2,
@@ -545,61 +561,153 @@ function DesignShowcaseSection() {
       headingMain: 'Visuals That Connect',
       description: 'Your brand deserves designs that resonate with your audience',
       image1: '/slide/slide2.png',
+      ctaPrimary: 'Get Started',
+      ctaSecondary: 'See Case Studies'
     },
     {
       id: 3,
       headingTop: 'Engaging & Effective',
       headingMain: 'Build Brand Trust',
       description: 'Designs that not only attract but convert and build loyalty',
-      image1: '/slide/slide3.jpg',
+      image1: '/slide/slide3.png',
+      ctaPrimary: 'Contact Us',
+      ctaSecondary: 'Client Testimonials'
     },
+    {
+      id: 4,
+      headingTop: 'Premium Quality',
+      headingMain: 'Exceptional Results',
+      description: 'Elevate your brand with our award-winning design team',
+      image1: '/slide/slide4.png',
+      ctaPrimary: 'Request Quote',
+      ctaSecondary: 'Our Awards'
+    }
   ];
 
-  const { headingTop, headingMain, description, image1 } = slides[current];
+  const { headingTop, headingMain, description, image1, ctaPrimary, ctaSecondary } = slides[current];
+
+  const nextSlide = useCallback(() => {
+    setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+  }, [slides.length]);
+
+  const prevSlide = useCallback(() => {
+    setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+  }, [slides.length]);
 
   const handleSetCurrent = (index: number) => {
+    setAutoPlay(false);
     setCurrent(index);
+    setTimeout(() => setAutoPlay(true), 10000);
   };
 
-  return (
-    <section className="w-full bg-gray-100 px-4 py-12">
-      <div className="max-w-7xl mx-auto bg-white rounded-xl shadow-md p-6 md:p-10 flex flex-col md:flex-row gap-8 items-center justify-between">
-        <div className="md:w-1/2 space-y-5 text-center md:text-left">
-          <h4 className="text-xl font-semibold text-blue-600">{headingTop}</h4>
-          <h2 className="text-3xl md:text-4xl font-bold text-orange-500">{headingMain}</h2>
-          <p className="text-gray-700">{description}</p>
+  useEffect(() => {
+    if (!autoPlay || isHovered) return;
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [autoPlay, isHovered, nextSlide]);
 
-          <div className="flex gap-4 mt-4 mb-5 justify-center md:justify-start">
-            <button className="bg-blue-600 text-white px-5 py-2 rounded-md hover:bg-white hover:text-blue-600 border-2 border-blue-600 transition-all">
-              Know More
+  return (
+    <section className="w-full bg-gradient-to-br from-gray-50 to-gray-100 px-5 py-10 md:py-24">
+      <div className="max-w-7xl mx-auto bg-white rounded-2xl shadow-xl p-6 md:p-12 flex flex-col md:flex-row gap-8 md:gap-12 items-center justify-between">
+        {/* LEFT CONTENT */}
+        <div 
+          className="md:w-1/2 space-y-6 text-center md:text-left"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          <h4 className="text-xl md:text-2xl font-semibold text-blue-600 tracking-wide">
+            {headingTop}
+          </h4>
+          <h2 className="text-3xl md:text-5xl font-bold text-orange-500 leading-tight">
+            {headingMain}
+          </h2>
+          <p className="text-gray-700 text-lg max-w-lg">
+            {description}
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 mt-8 justify-center md:justify-start">
+            <button 
+              className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-white hover:text-blue-600 border-2 border-blue-600 transition-all duration-300 shadow-md hover:shadow-lg font-medium"
+              onClick={() => console.log('Primary CTA clicked')}
+            >
+              {ctaPrimary}
             </button>
-            <button className="border-2 border-blue-600 text-blue-600 px-5 py-2 rounded-md hover:bg-blue-600 hover:text-white transition-all">
-              About Us
+            <button 
+              className="border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-md hover:shadow-lg font-medium"
+              onClick={() => console.log('Secondary CTA clicked')}
+            >
+              {ctaSecondary}
             </button>
           </div>
 
-          <div className="flex md:justify-center gap-3 mb-5 mt-10">
-            {slides.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => handleSetCurrent(index)}
-                className={`w-3 h-3 rounded-full justify-center transition-all duration-300 ${
-                  current === index ? 'bg-orange-500 scale-125' : 'bg-gray-400'
-                }`}
-              />
-            ))}
+          <div className="flex items-center justify-center md:justify-start gap-6 mt-12">
+            <button 
+              onClick={prevSlide}
+              className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-all"
+              aria-label="Previous slide"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            
+            <div className="flex gap-3">
+              {slides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleSetCurrent(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    current === index ? 'bg-orange-500 scale-125' : 'bg-gray-300 hover:bg-gray-400'
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+            
+            <button 
+              onClick={nextSlide}
+              className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-all"
+              aria-label="Next slide"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
           </div>
         </div>
 
-        <div className="md:w-1/2 flex justify-center">
-          <div className="relative rounded-t-[70px] overflow-hidden shadow-lg w-[350px] h-[350px]">
-            <Image src={image1} alt="Slide Visual" fill className="object-cover" />
+        {/* RIGHT IMAGE SECTION */}
+        <div 
+          className="md:w-1/2 flex justify-center relative group"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          <div className="relative w-full max-w-md h-[400px] md:h-[500px] overflow-hidden rounded-[2rem] shadow-2xl transition-all duration-500 group-hover:scale-[1.03] group-hover:rotate-[-1.5deg]">
+            <Image 
+              src={image1}
+              alt={`Slide ${current + 1} visual`}
+              fill
+              className="object-cover object-center transition-transform duration-700 ease-in-out scale-100 group-hover:scale-110"
+              priority={current === 0}
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-[2rem]" />
           </div>
+
+          {/* Glow gradient effect */}
+          <div className="absolute w-[90%] h-[90%] top-5 left-5 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 blur-3xl rounded-[2rem] opacity-30 -z-10" />
+
+          {/* Decorative blobs */}
+          <div className="absolute -top-10 -left-10 w-32 h-32 bg-blue-300 rounded-full blur-2xl opacity-20 -z-10 animate-pulse" />
+          <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-orange-400 rounded-full blur-2xl opacity-20 -z-10 animate-pulse" />
         </div>
       </div>
     </section>
   );
 }
+
 
 function BlogPost() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -856,7 +964,7 @@ function Footer() {
       </div>
 
       <Link
-        href="https://wa.me/918495862494"
+        href="https://wa.me/9844281875"
         className="fixed bottom-5 right-5 rounded-full shadow-lg z-50"
         target="_blank"
         rel="noopener noreferrer"

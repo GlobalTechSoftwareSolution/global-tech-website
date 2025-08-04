@@ -63,13 +63,13 @@ function Navbar() {
 
             <Link href="/contact" className="hover:text-blue-600 transition hover:underline hover:underline-offset-8">Contact Us</Link>
 
-            <motion.button 
+            {/* <motion.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transition duration-200 shadow-md"
             >
               📞 Call Us
-            </motion.button>
+            </motion.button> */}
           </div>
 
           <div className="md:hidden">
@@ -131,14 +131,14 @@ function Navbar() {
 
           <Link href="/contact" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Contact Us</Link>
           
-          <div className="pt-2">
+          {/* <div className="pt-2">
             <motion.button 
               whileTap={{ scale: 0.95 }}
               className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transition duration-200 w-full shadow-md mb-2"
             >
               📞 Call Us
             </motion.button>
-          </div>
+          </div> */}
         </div>
       </Transition>
     </nav>
@@ -286,7 +286,7 @@ function Footer() {
       </div>
 
       <Link
-        href="https://wa.me/918495862494"
+        href="https://wa.me/919844281875"
         className="fixed bottom-5 right-5 rounded-full shadow-lg z-50"
         target="_blank"
         rel="noopener noreferrer"

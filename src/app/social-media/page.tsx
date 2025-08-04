@@ -16,11 +16,20 @@ function Navbar() {
     <nav className="bg-white shadow-md sticky top-0 z-50 transition duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
+         {/* Logo */}
           <div className="flex-shrink-0 flex items-center space-x-2 ml-5">
-            <img src="/logo/Global.jpg" alt="Logo" className="h-16 mb-5 mt-5 ml-0 rounded-full shadow z-50" />
-            <span className="text-xl font-bold text-blue-700">
-              Global Tech <br /> Software Solutions
-            </span>
+            <Link href="/">
+              <div className="flex items-center space-x-2 cursor-pointer">
+                <img
+                  src="/logo/Global.jpg"
+                  alt="Logo"
+                  className="h-16 mb-5 mt-5 ml-0 rounded-full shadow z-50"
+                />
+                <span className="text-xl font-bold text-blue-700 leading-tight">
+                  Global Tech <br /> Software Solutions
+                </span>
+              </div>
+            </Link>
           </div>
 
           <div className="hidden md:flex items-center space-x-6 text-gray-700 font-medium">
@@ -53,12 +62,12 @@ function Navbar() {
 
             <Link href="/contact" className="hover:text-blue-600 transition">Contact Us</Link>
 
-            <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200">
+            {/* <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200">
               📞
             </button>
             <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200">
               📋 
-            </button>
+            </button> */}
           </div>
 
           <div className="md:hidden">
@@ -93,23 +102,23 @@ function ApproachAndWhyUs() {
         </h2>
         <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto text-gray-700">
           <div className="bg-blue-50 p-5 rounded-lg shadow hover:shadow-md transition duration-300">
-            <p className="font-semibold text-blue-700 mb-1">📊 Audience Research</p>
+            <p className="font-semibold text-blue-700 mb-1"> Audience Research</p>
             <p>We study your audience's interests and behavior to create engaging strategies.</p>
           </div>
           <div className="bg-purple-50 p-5 rounded-lg shadow hover:shadow-md transition duration-300">
-            <p className="font-semibold text-purple-700 mb-1">✍️ Content Creation</p>
+            <p className="font-semibold text-purple-700 mb-1"> Content Creation</p>
             <p>On-brand, goal-driven content that captivates and converts.</p>
           </div>
           <div className="bg-pink-50 p-5 rounded-lg shadow hover:shadow-md transition duration-300">
-            <p className="font-semibold text-pink-700 mb-1">📈 Analytics & Optimization</p>
+            <p className="font-semibold text-pink-700 mb-1"> Analytics & Optimization</p>
             <p>Performance tracking using KPIs like engagement and conversions.</p>
           </div>
           <div className="bg-green-50 p-5 rounded-lg shadow hover:shadow-md transition duration-300">
-            <p className="font-semibold text-green-700 mb-1">💰 Social Media Advertising</p>
+            <p className="font-semibold text-green-700 mb-1"> Social Media Advertising</p>
             <p>Precision-targeted ads for maximum ROI.</p>
           </div>
           <div className="bg-yellow-50 p-5 rounded-lg shadow hover:shadow-md transition duration-300 col-span-full">
-            <p className="font-semibold text-yellow-700 mb-1">📆 Best Practices</p>
+            <p className="font-semibold text-yellow-700 mb-1">Best Practices</p>
             <p>Consistent branding, data-backed decisions, and timely content scheduling.</p>
           </div>
         </div>
@@ -127,19 +136,19 @@ function ApproachAndWhyUs() {
         </h2>
         <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto text-gray-800">
           <div className="bg-white border border-gray-200 p-5 rounded-lg shadow-sm hover:shadow-md transition">
-            <p className="font-semibold text-indigo-700 mb-1">👨‍💼 Experienced Team</p>
+            <p className="font-semibold text-indigo-700 mb-1"> Experienced Team</p>
             <p>Deep expertise across multiple industries.</p>
           </div>
           <div className="bg-white border border-gray-200 p-5 rounded-lg shadow-sm hover:shadow-md transition">
-            <p className="font-semibold text-indigo-700 mb-1">🎯 Tailored Strategies</p>
+            <p className="font-semibold text-indigo-700 mb-1"> Tailored Strategies</p>
             <p>Custom plans aligned with your brand goals.</p>
           </div>
           <div className="bg-white border border-gray-200 p-5 rounded-lg shadow-sm hover:shadow-md transition">
-            <p className="font-semibold text-indigo-700 mb-1">🏆 Proven Results</p>
+            <p className="font-semibold text-indigo-700 mb-1"> Proven Results</p>
             <p>Measurable success in lead gen and visibility.</p>
           </div>
           <div className="bg-white border border-gray-200 p-5 rounded-lg shadow-sm hover:shadow-md transition">
-            <p className="font-semibold text-indigo-700 mb-1">📊 Transparent Reports</p>
+            <p className="font-semibold text-indigo-700 mb-1">Transparent Reports</p>
             <p>Clear insights into ad spend, growth, and KPIs.</p>
           </div>
         </div>
@@ -170,8 +179,8 @@ function Footer() {
           <div className="space-y-3 text-sm text-gray-300">
             <div className="flex items-center gap-2">
               <Image src="/icons/phone.png" alt="Phone" width={20} height={20} />
-              <a href="tel:+918495862494" className="hover:text-white">
-                +91-8495862494
+              <a href="tel:+919844281875" className="hover:text-white">
+                +91-9844281875
               </a>
             </div>
             <div className="flex items-center gap-2">

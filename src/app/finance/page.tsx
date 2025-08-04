@@ -16,11 +16,20 @@ function Navbar() {
     <nav className="bg-white shadow-md sticky top-0 z-50 transition duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
+          {/* Logo */}
           <div className="flex-shrink-0 flex items-center space-x-2 ml-5">
-            <img src="/logo/Global.jpg" alt="Logo" className="h-16 mb-5 mt-5 ml-0 rounded-full shadow z-50" />
-            <span className="text-xl font-bold text-blue-700">
-              Global Tech <br /> Software Solutions
-            </span>
+            <Link href="/">
+              <div className="flex items-center space-x-2 cursor-pointer">
+                <img
+                  src="/logo/Global.jpg"
+                  alt="Logo"
+                  className="h-16 mb-5 mt-5 ml-0 rounded-full shadow z-50"
+                />
+                <span className="text-xl font-bold text-blue-700 leading-tight">
+                  Global Tech <br /> Software Solutions
+                </span>
+              </div>
+            </Link>
           </div>
 
           <div className="hidden md:flex items-center space-x-6 text-gray-700 font-medium">
@@ -72,12 +81,12 @@ function Navbar() {
 
             <Link href="/contact" className="hover:text-blue-600 transition">Contact Us</Link>
 
-            <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200">
+            {/* <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200">
               📞
             </button>
             <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200">
               📋 
-            </button>
+            </button> */}
           </div>
 
           <div className="md:hidden">
@@ -119,8 +128,8 @@ function Footer() {
           <div className="space-y-3 text-sm text-gray-300">
             <div className="flex items-center gap-2">
               <Image src="/icons/phone.png" alt="Phone" width={20} height={20} />
-              <a href="tel:+918495862494" className="hover:text-white">
-                +91-8495862494
+              <a href="tel:+919844281875" className="hover:text-white">
+                +91-9844281875
               </a>
             </div>
             <div className="flex items-center gap-2">
@@ -183,7 +192,7 @@ function Footer() {
       </div>
 
       <Link
-        href="https://wa.me/918495862494"
+        href="https://wa.me/919844281875"
         className="fixed bottom-5 right-5 rounded-full shadow-lg z-50"
         target="_blank"
         rel="noopener noreferrer"

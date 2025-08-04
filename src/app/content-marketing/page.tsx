@@ -66,12 +66,12 @@ function Navbar() {
 
             <Link href="/contact" className="hover:text-blue-600 transition">Contact Us</Link>
 
-            <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200">
+            {/* <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200">
               📞
             </button>
             <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200">
               📋 
-            </button>
+            </button> */}
           </div>
 
           <div className="md:hidden">
@@ -130,14 +130,14 @@ function Navbar() {
 
           <Link href="/contact" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Contact Us</Link>
           
-          <div className="flex space-x-2 pt-2">
+          {/* <div className="flex space-x-2 pt-2">
             <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200 w-full">
               📞 Call Us
             </button>
             <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200 w-full">
               📋 Get Quote
             </button>
-          </div>
+          </div> */}
         </div>
       </Transition>
     </nav>
@@ -230,7 +230,7 @@ function Footer() {
       </div>
 
       <Link
-        href="https://wa.me/918495862494"
+        href="https://wa.me/919844281875"
         className="fixed bottom-5 right-5 rounded-full shadow-lg z-50"
         target="_blank"
         rel="noopener noreferrer"

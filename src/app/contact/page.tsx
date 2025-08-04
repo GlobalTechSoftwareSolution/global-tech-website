@@ -57,12 +57,12 @@ function Navbar() {
 
             <Link href="/contact" className="hover:text-blue-600 transition">Contact Us</Link>
 
-            <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200">
+            {/* <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200">
               📞
             </button>
             <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200">
               📋 
-            </button>
+            </button> */}
           </div>
 
           <div className="md:hidden">
@@ -122,14 +122,14 @@ function Navbar() {
 
           <Link href="/contact" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Contact Us</Link>
           
-          <div className="flex space-x-2 pt-2">
+          {/* <div className="flex space-x-2 pt-2">
             <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200 w-full">
               📞 Call Us
             </button>
             <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200 w-full">
               📋 Get Quote
             </button>
-          </div>
+          </div> */}
         </div>
       </Transition>
     </nav>
@@ -299,8 +299,8 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-medium text-gray-800">Phone</h3>
-                      <a href="tel:+919019543005" className="text-blue-600 hover:text-blue-800">
-                        +91 90195 43005
+                      <a href="tel:+919844281875" className="text-blue-600 hover:text-blue-800">
+                        +91 9844281875
                       </a>
                     </div>
                   </div>
