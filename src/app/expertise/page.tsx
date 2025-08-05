@@ -1,19 +1,18 @@
-'use client';
+"use client";
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
 import Link from 'next/link';
-import { ChevronDown } from 'lucide-react';
+import Image from 'next/image';
+import { ChevronDown } from 'react-feather';
 import { Transition } from '@headlessui/react';
+import { motion } from 'framer-motion';
 
 function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
-  const [clientsOpen, setClientsOpen] = useState(false);
 
   return (
-     <nav className="bg-white shadow-md sticky top-0 z-50 transition duration-300">
+    <nav className="bg-white shadow-md sticky top-0 z-50 transition duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           <Link href="/" className="flex-shrink-0 flex items-center space-x-2 ml-5">
@@ -31,41 +30,22 @@ function Navbar() {
               <button className="flex items-center hover:text-blue-600 transition">
                 Services <ChevronDown size={16} className="ml-1" />
               </button>
-              <Transition
-                show={true}
-                enter="transition ease-out duration-200"
-                enterFrom="transform opacity-0 -translate-y-2"
-                enterTo="transform opacity-100 translate-y-0"
-                leave="transition ease-in duration-150"
-                leaveFrom="transform opacity-100 translate-y-0"
-                leaveTo="transform opacity-0 -translate-y-2"
-              >
-                <div className=" hidden group-hover:block mt-2 w-40 bg-white shadow-lg rounded-md z-10">
-                  <Link href="/seo" className="block px-4 py-2 hover:bg-gray-300 transition">SEO</Link>
-                  <Link href="/sem" className="block px-4 py-2 hover:bg-gray-300 transition">SEM</Link>
-                  <Link href="/social-media" className="block px-4 py-2 hover:bg-gray-300 transition">Social Media</Link>
-                </div>
-              </Transition>
+              <div className=" hidden group-hover:block mt-2 w-40 bg-white shadow-lg rounded-md z-10">
+                <Link href="/seo" className="block px-4 py-2 hover:bg-gray-100 transition">SEO</Link>
+                <Link href="/sem" className="block px-4 py-2 hover:bg-gray-100 transition">SEM</Link>
+                <Link href="/social-media" className="block px-4 py-2 hover:bg-gray-100 transition">Social Media</Link>
+              </div>
             </div>
-{/* 
-            <div className="relative group">
-              <Link href="/client" className="flex items-center hover:text-blue-600 transition">
-                Our Clients
-              </Link>
-            </div> */}
 
             <Link href="/contact" className="hover:text-blue-600 transition">Contact Us</Link>
-
-            {/* <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200">
-              📞
-            </button>
-            <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200">
-              📋 
-            </button> */}
           </div>
 
           <div className="md:hidden">
-            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="transition transform hover:scale-110">
+            <button 
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
+              className="transition transform hover:scale-110"
+              aria-label="Toggle menu"
+            >
               <svg className="h-6 w-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {mobileMenuOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -87,7 +67,6 @@ function Navbar() {
         leave="transition ease-in duration-75"
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
-        // className="md:hidden"
       >
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
           <Link href="/" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Home</Link>
@@ -119,88 +98,140 @@ function Navbar() {
           </div>
 
           <Link href="/contact" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Contact Us</Link>
-          
-          {/* <div className="flex space-x-2 pt-2">
-            <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200 w-full">
-              📞 Call Us
-            </button>
-            <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200 w-full">
-              📋 Get Quote
-            </button>
-          </div> */}
         </div>
       </Transition>
     </nav>
   );
 }
 
-function ApproachAndWhyUs() {
+function HeroSection() {
   return (
-    <div className="bg-white text-gray-800">
-      {/* Our Approach Section */}
-      <motion.section
-        className="p-8 bg-white"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        <h2 className="text-3xl font-bold text-center mb-10 text-blue-800">
-          Our Approach
-        </h2>
-        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto text-gray-700">
-          <div className="bg-blue-50 p-5 rounded-lg shadow hover:shadow-md transition duration-300">
-            <p className="font-semibold text-blue-700 mb-1"> Audience Research</p>
-            <p>We study your audience's interests and behavior to create engaging strategies.</p>
+    <section className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20 px-6">
+      <div className="max-w-6xl mx-auto text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            Transforming Businesses Through Technology
+          </h1>
+          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+            We deliver cutting-edge software solutions that drive growth and innovation for your business
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link 
+              href="/contact" 
+              className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold text-lg transition duration-300"
+            >
+              Get Started
+            </Link>
+            <Link 
+              href="/services" 
+              className="border-2 border-white hover:bg-white hover:text-blue-600 px-8 py-3 rounded-lg font-semibold text-lg transition duration-300"
+            >
+              Our Services
+            </Link>
           </div>
-          <div className="bg-purple-50 p-5 rounded-lg shadow hover:shadow-md transition duration-300">
-            <p className="font-semibold text-purple-700 mb-1"> Content Creation</p>
-            <p>On-brand, goal-driven content that captivates and converts.</p>
-          </div>
-          <div className="bg-pink-50 p-5 rounded-lg shadow hover:shadow-md transition duration-300">
-            <p className="font-semibold text-pink-700 mb-1"> Analytics & Optimization</p>
-            <p>Performance tracking using KPIs like engagement and conversions.</p>
-          </div>
-          <div className="bg-green-50 p-5 rounded-lg shadow hover:shadow-md transition duration-300">
-            <p className="font-semibold text-green-700 mb-1"> Social Media Advertising</p>
-            <p>Precision-targeted ads for maximum ROI.</p>
-          </div>
-          <div className="bg-yellow-50 p-5 rounded-lg shadow hover:shadow-md transition duration-300 col-span-full">
-            <p className="font-semibold text-yellow-700 mb-1">Best Practices</p>
-            <p>Consistent branding, data-backed decisions, and timely content scheduling.</p>
-          </div>
-        </div>
-      </motion.section>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
 
-      {/* Why Choose Our Agency Section */}
-      <motion.section
-        className="p-8 bg-gradient-to-t from-blue-50 to-white"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-      >
-        <h2 className="text-3xl font-bold text-center mb-10 text-blue-800">
-          Why Choose Our Agency?
-        </h2>
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto text-gray-800">
-          <div className="bg-white border border-gray-200 p-5 rounded-lg shadow-sm hover:shadow-md transition">
-            <p className="font-semibold text-indigo-700 mb-1"> Experienced Team</p>
-            <p>Deep expertise across multiple industries.</p>
+function ServicesSection() {
+  const services = [
+    {
+      title: "Web Development",
+      description: "Custom websites and web applications tailored to your business needs",
+      icon: "/icons/web.png"
+    },
+    {
+      title: "Mobile Apps",
+      description: "iOS and Android apps built with the latest technologies",
+      icon: "/icons/mobile-phone.png"
+    },
+    {
+      title: "Cloud Solutions",
+      description: "Scalable cloud infrastructure and migration services",
+      icon: "/icons/could.png"
+    },
+    {
+      title: "UI/UX Design",
+      description: "Beautiful, intuitive interfaces that enhance user experience",
+      icon: "/icons/ui.png"
+    }
+  ];
+
+  return (
+    <section className="py-16 px-6 bg-white">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Services</h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Comprehensive solutions to help your business thrive in the digital world
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ y: -10 }}
+              className="bg-gray-50 p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300"
+            >
+              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                <Image 
+                  src={service.icon} 
+                  alt={service.title} 
+                  width={32} 
+                  height={32} 
+                />
+              </div>
+              <h3 className="text-xl font-bold text-gray-800 mb-3">{service.title}</h3>
+              <p className="text-gray-600">{service.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AboutSection() {
+  return (
+    <section className="py-16 px-6 bg-gray-50">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex flex-col lg:flex-row items-center gap-12">
+          <div className="lg:w-1/2">
+            <Image 
+              src="/logo/Global.jpg" 
+              alt="Our Team" 
+              width={600} 
+              height={400} 
+              className="rounded-xl shadow-xl"
+            />
           </div>
-          <div className="bg-white border border-gray-200 p-5 rounded-lg shadow-sm hover:shadow-md transition">
-            <p className="font-semibold text-indigo-700 mb-1"> Tailored Strategies</p>
-            <p>Custom plans aligned with your brand goals.</p>
-          </div>
-          <div className="bg-white border border-gray-200 p-5 rounded-lg shadow-sm hover:shadow-md transition">
-            <p className="font-semibold text-indigo-700 mb-1"> Proven Results</p>
-            <p>Measurable success in lead gen and visibility.</p>
-          </div>
-          <div className="bg-white border border-gray-200 p-5 rounded-lg shadow-sm hover:shadow-md transition">
-            <p className="font-semibold text-indigo-700 mb-1">Transparent Reports</p>
-            <p>Clear insights into ad spend, growth, and KPIs.</p>
+          <div className="lg:w-1/2">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">About Global Tech</h2>
+            <p className="text-lg text-gray-600 mb-6">
+              Founded in 2010, Global Tech Software Solutions has been at the forefront of digital transformation, 
+              helping businesses of all sizes leverage technology to achieve their goals.
+            </p>
+            <p className="text-lg text-gray-600 mb-8">
+              Our team of experienced developers, designers, and strategists work collaboratively to deliver 
+              solutions that are not just technically sound but also aligned with your business objectives.
+            </p>
+            <Link 
+              href="/about" 
+              className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold text-lg transition duration-300"
+            >
+              Learn More About Us
+            </Link>
           </div>
         </div>
-      </motion.section>
-    </div>
+      </div>
+    </section>
   );
 }
 
@@ -236,13 +267,13 @@ function Footer() {
                 href="mailto:Tech@globaltechsoftwaresolutions.com"
                 className="hover:text-white"
               >
-                Tech@globaltechsoftwaresolutions.com
+                hrglobaltechsoftwaresolutions@gmail.com
               </a>
             </div>
             <div className="flex items-start gap-2">
               <Image src="/icons/location.png" alt="Location" width={20} height={20} className="mt-1" />
               <span>
-               No 10,4th floor, Gaduniya Complex Ramaiah Layout,Vidyaranyapura Banglore-560097
+                No 10,4th floor, Gaduniya Complex Ramaiah Layout,Vidyaranyapura Banglore-560097
               </span>
             </div>
           </div>
@@ -280,11 +311,15 @@ function Footer() {
           </p>
           <Link
             href="/contact"
-            className="inline-block bg-orange-600 hover:bg-orange-700 text-white py-2 px-4 rounded"
+            className="inline-block bg-orange-600 hover:bg-orange-700 text-white py-2 px-4 rounded transition duration-300"
           >
             CLICK HERE
           </Link>
         </div>
+      </div>
+
+      <div className="max-w-screen-xl mx-auto pt-6 text-center text-gray-400 text-sm">
+        <p>© {new Date().getFullYear()} Global Tech Software Solutions. All rights reserved.</p>
       </div>
 
       <Link
@@ -298,45 +333,22 @@ function Footer() {
           alt="WhatsApp"
           width={48}
           height={48}
+          className="hover:scale-105 transition-transform"
         />
       </Link>
     </footer>
   );
 }
 
-export default function SocialMediaAgencyPage() {
+export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-white text-gray-800">
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      
-      {/* Hero Section */}
-      <motion.section
-        className="text-center p-8 bg-gradient-to-r from-blue-100 to-purple-100 pt-24"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        <h1 className="text-4xl font-extrabold text-blue-800 mb-4">
-          Best Social Media Marketing Agency in Bangalore
-        </h1>
-        <p className="max-w-3xl mx-auto text-gray-700 text-lg">
-          We specialize in high-impact strategies designed to engage your target audience, increase followers, and promote your brand across major platforms like Facebook, Instagram, LinkedIn, Twitter, and more.
-        </p>
-      </motion.section>
-
-      {/* Social Media Services Description */}
-      <motion.section
-        className="p-8 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-      >
-        {/* You can add additional content here if needed */}
-      </motion.section>
-
-      {/* Integrated ApproachAndWhyUs Component */}
-      <ApproachAndWhyUs />
-
+      <main className="flex-grow">
+        <HeroSection />
+        <ServicesSection />
+        <AboutSection />
+      </main>
       <Footer />
     </div>
   );

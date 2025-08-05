@@ -59,7 +59,6 @@ function Navbar() {
                 leaveTo="transform opacity-0 -translate-y-2"
               >
                 <div className=" hidden group-hover:block mt-2 w-40 bg-white shadow-lg rounded-md z-10">
-                  <Link href="/webdesign" className="block px-4 py-2 hover:bg-gray-300 transition">Web Design</Link>
                   <Link href="/seo" className="block px-4 py-2 hover:bg-gray-300 transition">SEO</Link>
                   <Link href="/sem" className="block px-4 py-2 hover:bg-gray-300 transition">SEM</Link>
                   <Link href="/social-media" className="block px-4 py-2 hover:bg-gray-300 transition">Social Media</Link>
@@ -130,7 +129,6 @@ function Navbar() {
               leaveTo="transform opacity-0 scale-95"
             >
               <div className="pl-4 space-y-1">
-                <Link href="/webdesign" className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-600 hover:bg-gray-50">Web Design</Link>
                 <Link href="/seo" className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-600 hover:bg-gray-50">SEO</Link>
                 <Link href="/sem" className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-600 hover:bg-gray-50">SEM</Link>
                 <Link href="/social-media" className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-600 hover:bg-gray-50">Social Media</Link>
@@ -176,8 +174,8 @@ function Footer() {
           <div className="space-y-3 text-sm text-gray-300">
             <div className="flex items-center gap-2">
               <Image src="/icons/phone.png" alt="Phone" width={20} height={20} />
-              <a href="tel:+918495862494" className="hover:text-white">
-                +91-8495862494
+              <a href="tel:+919844281875" className="hover:text-white">
+                +91-9844281875
               </a>
             </div>
             <div className="flex items-center gap-2">
@@ -192,9 +190,7 @@ function Footer() {
             <div className="flex items-start gap-2">
               <Image src="/icons/location.png" alt="Location" width={20} height={20} className="mt-1" />
               <span>
-                No 10c, Gaduniya Complex Ramaiah Layout,
-                <br />
-                Vidyaranyapura, Bangalore - 560097
+               No 10,4th floor, Gaduniya Complex Ramaiah Layout,Vidyaranyapura Banglore-560097
               </span>
             </div>
           </div>

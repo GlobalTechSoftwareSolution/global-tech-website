@@ -144,9 +144,7 @@ function Footer() {
             <div className="flex items-start gap-2">
               <Image src="/icons/location.png" alt="Location" width={20} height={20} className="mt-1" />
               <span>
-                No 10c, Gaduniya Complex Ramaiah Layout,
-                <br />
-                Vidyaranyapura, Bangalore - 560097
+               No 10,4th floor, Gaduniya Complex Ramaiah Layout,Vidyaranyapura Banglore-560097
               </span>
             </div>
           </div>

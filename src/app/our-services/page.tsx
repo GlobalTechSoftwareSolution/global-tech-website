@@ -4,34 +4,30 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ChevronDown } from 'react-feather';
+import { ChevronDown } from 'lucide-react';
 import { Transition } from '@headlessui/react';
 
 function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
-  const [clientsOpen, setClientsOpen] = useState(false);
 
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50 transition duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
-          {/* Logo */}
-          <div className="flex-shrink-0 flex items-center space-x-2 ml-5">
-            <Link href="/">
-              <div className="flex items-center space-x-2 cursor-pointer">
-                <img
-                  src="/logo/Global.jpg"
-                  alt="Logo"
-                  className="h-16 mb-5 mt-5 ml-0 rounded-full shadow z-50"
-                />
-                <span className="text-xl font-bold text-blue-700 leading-tight">
-                  Global Tech <br /> Software Solutions
-                </span>
-              </div>
-            </Link>
-          </div>
-        
+          <Link href="/" className="flex-shrink-0 flex items-center space-x-2 ml-5">
+            <Image
+              src="/logo/Global.jpg"
+              alt="Logo"
+              width={64}
+              height={64}
+              className="h-16 mb-5 mt-5 ml-0 rounded-full shadow z-50"
+            />
+            <span className="text-xl font-bold text-blue-700">
+              Global Tech <br /> Software Solutions
+            </span>
+          </Link>
+
           <div className="hidden md:flex items-center space-x-6 text-gray-700 font-medium">
             <Link href="/" className="hover:text-blue-600 transition">Home</Link>
             <Link href="/about" className="hover:text-blue-600 transition">About Us</Link>
@@ -49,29 +45,15 @@ function Navbar() {
                 leaveFrom="transform opacity-100 translate-y-0"
                 leaveTo="transform opacity-0 -translate-y-2"
               >
-                <div className=" hidden group-hover:block mt-2 w-40 bg-white shadow-lg rounded-md z-10">
-                  <Link href="/webdesign" className="block px-4 py-2 hover:bg-gray-300 transition">Web Design</Link>
+                <div className="hidden group-hover:block mt-2 w-40 bg-white shadow-lg rounded-md z-10">
                   <Link href="/seo" className="block px-4 py-2 hover:bg-gray-300 transition">SEO</Link>
                   <Link href="/sem" className="block px-4 py-2 hover:bg-gray-300 transition">SEM</Link>
                   <Link href="/social-media" className="block px-4 py-2 hover:bg-gray-300 transition">Social Media</Link>
                 </div>
               </Transition>
             </div>
-{/* 
-            <div className="relative group">
-              <button className="flex items-center hover:text-blue-600 transition">
-                Our Clients 
-              </button>
-            </div> */}
 
             <Link href="/contact" className="hover:text-blue-600 transition">Contact Us</Link>
-
-            {/* <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200">
-              📞
-            </button>
-            <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200">
-              📋 
-            </button> */}
           </div>
 
           <div className="md:hidden">
@@ -120,7 +102,6 @@ function Navbar() {
               leaveTo="transform opacity-0 scale-95"
             >
               <div className="pl-4 space-y-1">
-                <Link href="/webdesign" className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-600 hover:bg-gray-50">Web Design</Link>
                 <Link href="/seo" className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-600 hover:bg-gray-50">SEO</Link>
                 <Link href="/sem" className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-600 hover:bg-gray-50">SEM</Link>
                 <Link href="/social-media" className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-600 hover:bg-gray-50">Social Media</Link>
@@ -129,15 +110,6 @@ function Navbar() {
           </div>
 
           <Link href="/contact" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Contact Us</Link>
-          
-          {/* <div className="flex space-x-2 pt-2">
-            <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200 w-full">
-              📞 Call Us
-            </button>
-            <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200 w-full">
-              📋 Get Quote
-            </button>
-          </div> */}
         </div>
       </Transition>
     </nav>
@@ -173,10 +145,10 @@ function Footer() {
             <div className="flex items-center gap-2">
               <Image src="/icons/email.png" alt="Email" width={20} height={20} />
               <a
-                href="mailto:Tech@globaltechsoftwaresolutions.com"
+                href="mailto:hrglobaltechsoftwaresolutions@gmail.com"
                 className="hover:text-white"
               >
-                Tech@globaltechsoftwaresolutions.com
+                hrglobaltechsoftwaresolutions@gmail.com
               </a>
             </div>
             <div className="flex items-start gap-2">
@@ -228,7 +200,7 @@ function Footer() {
       </div>
 
       <Link
-        href="https://wa.me/919844281875"
+        href="https://wa.me/918495862494"
         className="fixed bottom-5 right-5 rounded-full shadow-lg z-50"
         target="_blank"
         rel="noopener noreferrer"
@@ -244,101 +216,83 @@ function Footer() {
   );
 }
 
-export default function SEOAgencyBangalore() {
+function DigitalAgencySection() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar />
-      
-      {/* Your existing content */}
-      <section className="bg-gradient-to-br from-white via-blue-50 to-purple-100 py-16 px-6 md:px-24 flex-grow">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto text-center mb-12"
-        >
-          <h1 className="text-4xl font-bold text-blue-800 mb-4">
-            Digital Marketing Agency in Bangalore – Expert SEO Services for Your Business
-          </h1>
-        </motion.div>
+    <section className="bg-gradient-to-br from-white to-blue-50 px-6 py-12 md:px-20">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="max-w-5xl mx-auto"
+      >
+        <h4 className="text-lg text-blue-600 font-semibold mb-2">Digital Transformation</h4>
+        <h2 className="text-4xl md:text-5xl font-extrabold text-orange-600 mb-4">
+          Full-Service Digital Agency
+        </h2>
+        <p className="text-gray-700 text-lg mb-6">
+          From strategy to execution – we build seamless digital experiences that drive measurable results
+          and elevate your brand's presence in the digital landscape.
+        </p>
 
-        {/* Image */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="max-w-4xl mx-auto mb-10"
-        >
-          <img
-            src="/icons/branding.png" // Replace this with your actual image path
-            alt="SEO Strategy in Bangalore"
-            className="w-full rounded-xl shadow-md"
-          />
-        </motion.div>
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
+          <div className="bg-white p-6 rounded-xl shadow-md border-l-4 border-blue-500 transition hover:shadow-xl hover:scale-[1.02]">
+            <h3 className="text-xl font-bold text-blue-800 mb-2">💡 Strategy & Consulting</h3>
+            <p className="text-gray-600">
+              We help businesses identify opportunities, define goals, and craft strategies for success in the digital world.
+            </p>
+          </div>
 
-        {/* Form */}
-        <div className="bg-white p-8 rounded-xl shadow-md max-w-3xl mx-auto">
-          <h2 className="text-2xl font-semibold text-blue-700 mb-6 text-center">
-            ENQUIRE NOW
-          </h2>
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <input
-              type="text"
-              placeholder="Enter Your Name *"
-              className="p-3 border border-gray-300 rounded-lg focus:outline-blue-500"
-              required
-            />
-            <input
-              type="tel"
-              placeholder="Enter Mobile Number *"
-              className="p-3 border border-gray-300 rounded-lg focus:outline-blue-500"
-              required
-            />
-            <input
-              type="email"
-              placeholder="Enter Your Email Id *"
-              className="p-3 border border-gray-300 rounded-lg focus:outline-blue-500 md:col-span-2"
-              required
-            />
-            <input
-              type="text"
-              placeholder="Services"
-              className="p-3 border border-gray-300 rounded-lg focus:outline-blue-500 md:col-span-2"
-            />
-            <textarea
-              placeholder="Your Message"
-              rows={4}
-              className="p-3 border border-gray-300 rounded-lg focus:outline-blue-500 md:col-span-2"
-            ></textarea>
-            <button
-              type="submit"
-              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg md:col-span-2 transition duration-300"
-            >
-              Submit
-            </button>
-          </form>
+          <div className="bg-white p-6 rounded-xl shadow-md border-l-4 border-orange-500 transition hover:shadow-xl hover:scale-[1.02]">
+            <h3 className="text-xl font-bold text-orange-700 mb-2">🌐 Web & App Development</h3>
+            <p className="text-gray-600">
+              Build high-performing websites and apps that are scalable, responsive, and user-friendly.
+            </p>
+          </div>
+
+          <div className="bg-white p-6 rounded-xl shadow-md border-l-4 border-green-500 transition hover:shadow-xl hover:scale-[1.02]">
+            <h3 className="text-xl font-bold text-green-700 mb-2">📈 Digital Marketing</h3>
+            <p className="text-gray-600">
+              Drive traffic and conversions with tailored SEO, PPC, content marketing, and social campaigns.
+            </p>
+          </div>
+
+          <div className="bg-white p-6 rounded-xl shadow-md border-l-4 border-purple-500 transition hover:shadow-xl hover:scale-[1.02]">
+            <h3 className="text-xl font-bold text-purple-700 mb-2">🎨 UI/UX Design</h3>
+            <p className="text-gray-600">
+              Craft intuitive, elegant user experiences that enhance engagement and increase satisfaction.
+            </p>
+          </div>
         </div>
 
-        {/* SEO Content */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-16 max-w-4xl mx-auto text-gray-700 space-y-6"
-        >
-          <p>
-            Are you having a hard time online? We offer Search Engine Optimization (SEO) strategies that are focused on your increasing search engine rankings, gaining organic traffic, and growing your business with our Digital Marketing Agency in Bangalore. Our SEO specialists can assist you in either case if your company is a startup or one already existing to optimize your online performance and reach the targets that you have set. Our SEO services incorporate Local SEO, Technical SEO, and all the other types of SEO that are customized for the specific requirements of the companies in Bangalore.
-          </p>
-          <p>
-            Being an SEO-focused digital marketing agency, we are well aware of the importance of better rankings in search engines. With 90% of online experiences starting with a search engine, it must be clear for you that search engine optimization is the only way for your business to be successful. Our SEO campaign is data-driven and is results-oriented thus, you will have a measurable increase in traffic, leads, and conversions.
-          </p>
-        </motion.div>
-      </section>
+        {/* <div className="flex gap-4">
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            href="#services"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md shadow-md transition duration-300"
+          >
+            🔍 Our Services
+          </motion.a>
 
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            href="#proposal"
+            className="border border-blue-600 text-blue-700 hover:bg-blue-50 px-6 py-3 rounded-md shadow-md transition duration-300"
+          >
+            📝 Get Proposal
+          </motion.a>
+        </div> */}
+      </motion.div>
+    </section>
+  );
+}
+
+export default function CombinedPage() {
+  return (
+    <>
+      <Navbar />
+      <DigitalAgencySection />
       <Footer />
-    </div>
+    </>
   );
 }

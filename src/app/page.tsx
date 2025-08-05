@@ -553,48 +553,51 @@ function DesignShowcaseSection() {
       setIsMobile(window.innerWidth < 768);
     };
     
-    handleResize(); // Set initial value
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    // Check if window is defined (client-side)
+    if (typeof window !== 'undefined') {
+      handleResize();
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
   }, []);
 
   const slides: Slide[] = [
     {
       id: 1,
-      headingTop: 'Designs That Inspire',
-      headingMain: 'Creativity That Speaks',
-      description: 'Bringing Your Ideas to Life with Our Stunning Designs',
-      image1: '/slide/slide1.png',
-      ctaPrimary: 'About us',
-      ctaSecondary: 'Contact Us'
-    },
-    {
-      id: 2,
-      headingTop: 'Tailored For You',
-      headingMain: 'Visuals That Connect',
-      description: 'Your brand deserves designs that resonate with your audience',
+      headingTop: 'Enterprise Solutions',
+      headingMain: 'ERP System Integration',
+      description: 'Streamline your business operations with our comprehensive ERP solutions tailored to your needs',
       image1: '/slide/slide2.png',
-      ctaPrimary: 'About us',
-      ctaSecondary: 'Contact Us'
+      ctaPrimary: 'Learn More',
+      ctaSecondary: 'Request Demo'
+    },
+     {
+      id: 2,
+      headingTop: 'Global Tech Innovation',
+      headingMain: 'Custom Software Development',
+      description: 'Bespoke technology solutions designed to solve your unique business challenges',
+      image1: '/slide/slide4.jpg',
+      ctaPrimary: 'Our Expertise',
+      ctaSecondary: 'Contact Team'
     },
     {
       id: 3,
-      headingTop: 'Engaging & Effective',
-      headingMain: 'Build Brand Trust',
-      description: 'Designs that not only attract but convert and build loyalty',
+      headingTop: 'Education Technology',
+      headingMain: 'School Management System',
+      description: 'Modernize your institution with our all-in-one education management platform',
       image1: '/slide/slide3.png',
-      ctaPrimary: 'Contact Us',
-      ctaSecondary: 'About us'
+      ctaPrimary: 'See Features',
+      ctaSecondary: 'Book Consultation'
     },
     {
       id: 4,
-      headingTop: 'Premium Quality',
-      headingMain: 'Exceptional Results',
-      description: 'Elevate your brand with our award-winning design team',
-      image1: '/slide/slide4.png',
-      ctaPrimary: 'About Us',
-      ctaSecondary: 'Contact Us'
-    }
+      headingTop: 'Digital Transformation',
+      headingMain: 'Full-Service Digital Agency',
+      description: 'From strategy to execution - we build digital experiences that drive results',
+      image1: '/slide/slide1.png',
+      ctaPrimary: 'Our Services',
+      ctaSecondary: 'Get Proposal'
+    },
   ];
 
   const { headingTop, headingMain, description, image1, ctaPrimary, ctaSecondary } = slides[current];
@@ -624,9 +627,9 @@ function DesignShowcaseSection() {
   return (
     <section className="w-full bg-gradient-to-br from-gray-50 to-gray-100 px-5 py-10 md:py-24">
       <div className="max-w-7xl mx-auto bg-white rounded-2xl shadow-xl p-6 md:p-12 flex flex-col md:flex-row gap-8 md:gap-12 items-center justify-between">
-        {/* LEFT CONTENT */}
+        {/* CONTENT - Comes first in DOM for mobile, but appears on right on desktop */}
         <div 
-          className="md:w-1/2 space-y-6 text-center md:text-left order-2 md:order-1"
+          className="w-full md:w-1/2 space-y-6 text-center md:text-left order-1"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
@@ -636,19 +639,31 @@ function DesignShowcaseSection() {
           <h2 className="text-3xl md:text-5xl font-bold text-orange-500 leading-tight">
             {headingMain}
           </h2>
-          <p className="text-gray-700 text-lg max-w-lg">
+          <p className="text-gray-700 text-lg max-w-lg mx-auto md:mx-0">
             {description}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mt-8 justify-center md:justify-start">
-            <Link 
-              href={ctaPrimary.toLowerCase().includes('contact') ? '/contact' : '/about'}
+            <Link
+              href={
+                ctaPrimary.toLowerCase().includes('learn') ? '/learn-more' :
+                ctaPrimary.toLowerCase().includes('expertise') ? '/expertise' :
+                ctaPrimary.toLowerCase().includes('see') ? '/features' :
+                ctaPrimary.toLowerCase().includes('our') ? '/our-services' :
+                '/about'
+              }
               className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-white hover:text-blue-600 border-2 border-blue-600 transition-all duration-300 shadow-md hover:shadow-lg font-medium text-center"
             >
               {ctaPrimary}
             </Link>
-            <Link 
-              href={ctaSecondary.toLowerCase().includes('contact') ? '/contact' : '/about'}
+            <Link
+              href={
+                ctaSecondary.toLowerCase().includes('request') ? '/contact' :
+                ctaSecondary.toLowerCase().includes('get') ? '/contact' :
+                ctaSecondary.toLowerCase().includes('book') ? '/contact' :
+                ctaSecondary.toLowerCase().includes('contact') ? '/contact' :
+                '/contact'
+              }
               className="border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-md hover:shadow-lg font-medium text-center"
             >
               {ctaSecondary}
@@ -691,22 +706,22 @@ function DesignShowcaseSection() {
           </div>
         </div>
 
-        {/* RIGHT IMAGE SECTION */}
+        {/* IMAGE SECTION - Comes second in DOM but appears on left on desktop */}
         <div 
-          className="md:w-1/2 flex justify-center relative group order-1 md:order-2 mb-8 md:mb-0"
+          className="w-full md:w-1/2 flex justify-center relative group order-2 md:order-2 mb-8 md:mb-0"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
           <div className="relative w-full max-w-md h-[300px] md:h-[500px] overflow-hidden rounded-[2rem] shadow-2xl transition-all duration-500 group-hover:scale-[1.03] group-hover:rotate-[-1.5deg]">
             <Image 
               src={image1}
-              alt={`Slide ${current + 1} visual`}
+              alt={`${headingMain} - ${headingTop}`}
               fill
               className="object-cover object-center transition-transform duration-700 ease-in-out scale-100 group-hover:scale-110"
-              priority={current === 0 || isMobile} // Prioritize first slide and mobile
+              priority={current === 0 || isMobile}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              quality={isMobile ? 75 : 85} // Adjust quality for mobile
-              unoptimized={process.env.NODE_ENV === 'development'} // Disable optimization in dev
+              quality={isMobile ? 75 : 85}
+              unoptimized={process.env.NODE_ENV === 'development'}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-[2rem]" />
           </div>
@@ -917,8 +932,8 @@ function Footer() {
           <div className="space-y-3 text-sm text-gray-300">
             <div className="flex items-center gap-2">
               <Image src="/icons/phone.png" alt="Phone" width={20} height={20} />
-              <a href="tel:+918495862494" className="hover:text-white">
-                +91-8495862494
+              <a href="tel:+919844281875" className="hover:text-white">
+                +91-9844281875
               </a>
             </div>
             <div className="flex items-center gap-2">
@@ -933,9 +948,7 @@ function Footer() {
             <div className="flex items-start gap-2">
               <Image src="/icons/location.png" alt="Location" width={20} height={20} className="mt-1" />
               <span>
-                No 10c, Gaduniya Complex Ramaiah Layout,
-                <br />
-                Vidyaranyapura, Bangalore - 560097
+               No 10,4th floor, Gaduniya Complex Ramaiah Layout,Vidyaranyapura Banglore-560097
               </span>
             </div>
           </div>
