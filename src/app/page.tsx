@@ -102,23 +102,25 @@ function Navbar() {
             <Link href="/" className="block hover:text-blue-600">Home</Link>
             <Link href="/about" className="block hover:text-blue-600">About Us</Link>
 
-            <div>
-              <p className="font-semibold">Services</p>
-              <div className="ml-4 space-y-1">
-                <Link href="/webdesign" className="block hover:text-blue-600">Web Design</Link>
-                <Link href="/seo" className="block hover:text-blue-600">SEO</Link>
-                <Link href="/sem" className="block hover:text-blue-600">SEM</Link>
-                <Link href="/social-media" className="block hover:text-blue-600">Social Media</Link>
+            <div className="relative group">
+              <button className="flex items-center hover:text-blue-600 transition">
+                Services <ChevronDown size={16} className="ml-1" />
+              </button>
+              <div className=" hidden group-hover:block mt-2 w-40 bg-white shadow-lg rounded-md z-10">
+                {/* <Link href="/webdesign" className="block px-4 py-2 hover:bg-gray-300 transition">Web Design</Link> */}
+                <Link href="/seo" className="block px-4 py-2 hover:bg-gray-300 transition">SEO</Link>
+                <Link href="/sem" className="block px-4 py-2 hover:bg-gray-300 transition">SEM</Link>
+                <Link href="/social-media" className="block px-4 py-2 hover:bg-gray-300 transition">Social Media</Link>
               </div>
             </div>
 
-            <div>
+            {/* <div>
               <p className="font-semibold">Our Clients</p>
               <div className="ml-4 space-y-1">
                 <Link href="/branding" className="block hover:text-blue-600">Branding</Link>
                 <Link href="/apollo-hospitl" className="block hover:text-blue-600">Apollo Hospital</Link>
               </div>
-            </div>
+            </div> */}
 
             <Link href="/contact" className="block hover:text-blue-600">Contact Us</Link>
 
@@ -544,6 +546,17 @@ function DesignShowcaseSection() {
   const [current, setCurrent] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    handleResize(); // Set initial value
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const slides: Slide[] = [
     {
@@ -552,8 +565,8 @@ function DesignShowcaseSection() {
       headingMain: 'Creativity That Speaks',
       description: 'Bringing Your Ideas to Life with Our Stunning Designs',
       image1: '/slide/slide1.png',
-      ctaPrimary: 'View Portfolio',
-      ctaSecondary: 'Our Process'
+      ctaPrimary: 'About us',
+      ctaSecondary: 'Contact Us'
     },
     {
       id: 2,
@@ -561,8 +574,8 @@ function DesignShowcaseSection() {
       headingMain: 'Visuals That Connect',
       description: 'Your brand deserves designs that resonate with your audience',
       image1: '/slide/slide2.png',
-      ctaPrimary: 'Get Started',
-      ctaSecondary: 'See Case Studies'
+      ctaPrimary: 'About us',
+      ctaSecondary: 'Contact Us'
     },
     {
       id: 3,
@@ -571,7 +584,7 @@ function DesignShowcaseSection() {
       description: 'Designs that not only attract but convert and build loyalty',
       image1: '/slide/slide3.png',
       ctaPrimary: 'Contact Us',
-      ctaSecondary: 'Client Testimonials'
+      ctaSecondary: 'About us'
     },
     {
       id: 4,
@@ -579,8 +592,8 @@ function DesignShowcaseSection() {
       headingMain: 'Exceptional Results',
       description: 'Elevate your brand with our award-winning design team',
       image1: '/slide/slide4.png',
-      ctaPrimary: 'Request Quote',
-      ctaSecondary: 'Our Awards'
+      ctaPrimary: 'About Us',
+      ctaSecondary: 'Contact Us'
     }
   ];
 
@@ -613,7 +626,7 @@ function DesignShowcaseSection() {
       <div className="max-w-7xl mx-auto bg-white rounded-2xl shadow-xl p-6 md:p-12 flex flex-col md:flex-row gap-8 md:gap-12 items-center justify-between">
         {/* LEFT CONTENT */}
         <div 
-          className="md:w-1/2 space-y-6 text-center md:text-left"
+          className="md:w-1/2 space-y-6 text-center md:text-left order-2 md:order-1"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
@@ -628,18 +641,18 @@ function DesignShowcaseSection() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mt-8 justify-center md:justify-start">
-            <button 
-              className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-white hover:text-blue-600 border-2 border-blue-600 transition-all duration-300 shadow-md hover:shadow-lg font-medium"
-              onClick={() => console.log('Primary CTA clicked')}
+            <Link 
+              href={ctaPrimary.toLowerCase().includes('contact') ? '/contact' : '/about'}
+              className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-white hover:text-blue-600 border-2 border-blue-600 transition-all duration-300 shadow-md hover:shadow-lg font-medium text-center"
             >
               {ctaPrimary}
-            </button>
-            <button 
-              className="border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-md hover:shadow-lg font-medium"
-              onClick={() => console.log('Secondary CTA clicked')}
+            </Link>
+            <Link 
+              href={ctaSecondary.toLowerCase().includes('contact') ? '/contact' : '/about'}
+              className="border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-md hover:shadow-lg font-medium text-center"
             >
               {ctaSecondary}
-            </button>
+            </Link>
           </div>
 
           <div className="flex items-center justify-center md:justify-start gap-6 mt-12">
@@ -680,28 +693,32 @@ function DesignShowcaseSection() {
 
         {/* RIGHT IMAGE SECTION */}
         <div 
-          className="md:w-1/2 flex justify-center relative group"
+          className="md:w-1/2 flex justify-center relative group order-1 md:order-2 mb-8 md:mb-0"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <div className="relative w-full max-w-md h-[400px] md:h-[500px] overflow-hidden rounded-[2rem] shadow-2xl transition-all duration-500 group-hover:scale-[1.03] group-hover:rotate-[-1.5deg]">
+          <div className="relative w-full max-w-md h-[300px] md:h-[500px] overflow-hidden rounded-[2rem] shadow-2xl transition-all duration-500 group-hover:scale-[1.03] group-hover:rotate-[-1.5deg]">
             <Image 
               src={image1}
               alt={`Slide ${current + 1} visual`}
               fill
               className="object-cover object-center transition-transform duration-700 ease-in-out scale-100 group-hover:scale-110"
-              priority={current === 0}
-              sizes="(max-width: 768px) 100vw, 50vw"
+              priority={current === 0 || isMobile} // Prioritize first slide and mobile
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              quality={isMobile ? 75 : 85} // Adjust quality for mobile
+              unoptimized={process.env.NODE_ENV === 'development'} // Disable optimization in dev
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-[2rem]" />
           </div>
 
-          {/* Glow gradient effect */}
-          <div className="absolute w-[90%] h-[90%] top-5 left-5 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 blur-3xl rounded-[2rem] opacity-30 -z-10" />
-
-          {/* Decorative blobs */}
-          <div className="absolute -top-10 -left-10 w-32 h-32 bg-blue-300 rounded-full blur-2xl opacity-20 -z-10 animate-pulse" />
-          <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-orange-400 rounded-full blur-2xl opacity-20 -z-10 animate-pulse" />
+          {/* Glow gradient effect - hidden on mobile */}
+          {!isMobile && (
+            <>
+              <div className="absolute w-[90%] h-[90%] top-5 left-5 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 blur-3xl rounded-[2rem] opacity-30 -z-10" />
+              <div className="absolute -top-10 -left-10 w-32 h-32 bg-blue-300 rounded-full blur-2xl opacity-20 -z-10 animate-pulse" />
+              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-orange-400 rounded-full blur-2xl opacity-20 -z-10 animate-pulse" />
+            </>
+          )}
         </div>
       </div>
     </section>
