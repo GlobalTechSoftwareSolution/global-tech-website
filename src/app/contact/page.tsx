@@ -1,15 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, FormEvent } from 'react';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronDown } from 'lucide-react';
 import { Transition } from '@headlessui/react';
-
-
-
-
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -20,6 +17,8 @@ export default function ContactPage() {
     message: ''
   });
 
+  const form = useRef<HTMLFormElement>(null);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -28,15 +27,40 @@ export default function ContactPage() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const sendEmail = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(formData);
-    alert("Message sent successfully!");
+
+    if (!form.current) return;
+
+    emailjs
+      .sendForm(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '' ,
+        
+        form.current,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || ''
+      )
+      .then(
+        () => {
+          console.log('SUCCESS!');
+          alert("Message sent successfully!");
+          setFormData({
+            name: '',
+            phone: '',
+            email: '',
+            services: '',
+            message: ''
+          });
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+          alert("Failed to send message. Please try again.");
+        },
+      );
   };
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
-      
       {/* Main Content */}
       <main className="flex-grow">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -122,7 +146,7 @@ export default function ContactPage() {
                 Fill out the form below and we'll respond as soon as possible
               </p>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form ref={form} onSubmit={sendEmail} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                     Enter Your Name *
@@ -138,20 +162,6 @@ export default function ContactPage() {
                   />
                 </div>
 
-                {/* <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                    Enter Mobile Number *
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    required
-                  />
-                </div> */}
 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
@@ -214,7 +224,6 @@ export default function ContactPage() {
         </div>
       </main>
 
-
       {/* WhatsApp Floating Button */}
       <a
         href="https://wa.me/919019543005"
@@ -228,172 +237,4 @@ export default function ContactPage() {
       </a>
     </div>
   );
-}
-
-// Media Queries
-const styles = `
-  /* Mobile styles (up to 767px) */
-  @media (max-width: 767px) {
-    /* Navbar adjustments */
-    .flex-shrink-0 img {
-      height: 12vw;
-      margin-bottom: 2vw;
-      margin-top: 2vw;
-    }
-    
-    .flex-shrink-0 span {
-      font-size: 4.5vw;
-      line-height: 1.2;
-    }
-    
-    /* Contact page adjustments */
-    main {
-      padding: 6vw 4vw;
-    }
-    
-    .grid {
-      grid-template-columns: 1fr;
-      gap: 8vw;
-    }
-    
-    h1.text-3xl {
-      font-size: 7vw;
-    }
-    
-    h2.text-2xl {
-      font-size: 6vw;
-    }
-    
-    .bg-white {
-      padding: 6vw;
-    }
-    
-    /* Form elements */
-    input, select, textarea {
-      padding: 3vw 4vw;
-    }
-    
-    button.py-3 {
-      padding: 3vw;
-    }
-    
-    /* Footer adjustments */
-    footer {
-      padding: 6vw 4vw;
-    }
-    
-    footer .grid-cols-1 {
-      gap: 8vw;
-    }
-    
-    footer h3 {
-      font-size: 5vw;
-    }
-    
-    footer h4 {
-      font-size: 5.5vw;
-      margin-bottom: 3vw;
-    }
-    
-    footer .text-sm {
-      font-size: 3.8vw;
-    }
-    
-    /* WhatsApp button */
-    .fixed.bottom-6.right-6 {
-      bottom: 4vw;
-      right: 4vw;
-      padding: 2.5vw;
-    }
-    
-    .fixed.bottom-6.right-6 svg {
-      width: 5vw;
-      height: 5vw;
-    }
-  }
-  
-  /* Tablet styles (768px to 1023px) */
-  @media (min-width: 768px) and (max-width: 1023px) {
-    /* General padding adjustments */
-    main {
-      padding: 8vw 6vw;
-    }
-    
-    /* Contact page grid */
-    .grid {
-      gap: 6vw;
-    }
-    
-    /* Font size adjustments */
-    h1.text-3xl {
-      font-size: 4vw;
-    }
-    
-    h2.text-2xl {
-      font-size: 3.5vw;
-    }
-    
-    /* Form elements */
-    input, select, textarea {
-      padding: 2vw 3vw;
-    }
-    
-    /* Footer adjustments */
-    footer {
-      padding: 8vw 6vw;
-    }
-    
-    footer .grid-cols-3 {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    
-    footer > div:last-child {
-      grid-column: span 2;
-    }
-  }
-  
-  /* Small desktop styles (1024px to 1279px) */
-  @media (min-width: 1024px) and (max-width: 1279px) {
-    /* Slightly reduce padding */
-    main {
-      padding: 6vw 4vw;
-    }
-    
-    /* Adjust form widths */
-    .bg-white {
-      padding: 4vw;
-    }
-  }
-  
-  /* Navigation responsive behaviors */
-  @media (max-width: 1023px) {
-    .hidden-md {
-      display: none;
-    }
-    
-    .md\\:flex {
-      display: none;
-    }
-    
-    .md\\:hidden {
-      display: block;
-    }
-  }
-  
-  @media (min-width: 1024px) {
-    .md\\:flex {
-      display: flex;
-    }
-    
-    .md\\:hidden {
-      display: none;
-    }
-  }
-`;
-
-// Add styles to the head
-if (typeof document !== 'undefined') {
-  const styleElement = document.createElement('style');
-  styleElement.innerHTML = styles;
-  document.head.appendChild(styleElement);
 }

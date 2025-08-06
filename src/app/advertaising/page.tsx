@@ -113,17 +113,7 @@ export default function PaidMediaSection() {
               </p>
             </motion.div>
 
-            {/* CTA Button */}
-            <motion.div
-              className="mt-8"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 1 }}
-            >
-              <button className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-red-600 transition-all shadow-lg hover:shadow-xl">
-                Get Your Free PPC Audit
-              </button>
-            </motion.div>
+           
           </motion.div>
 
           {/* Right Image */}

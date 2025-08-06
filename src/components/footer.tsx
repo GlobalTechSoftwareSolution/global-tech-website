@@ -33,10 +33,10 @@ const Footer = () => {
             <div className="flex items-center gap-2">
               <Image src="/icons/email.png" alt="Email" width={20} height={20} />
               <a
-                href="mailto:Tech@globaltechsoftwaresolutions.com"
+                href="mailto:hrglobaltechsoftwaresolutions@gmail.com"
                 className="hover:text-white"
               >
-                Tech@globaltechsoftwaresolutions.com
+                hrglobaltechsoftwaresolutions@gmail.com
               </a>
             </div>
             <div className="flex items-start gap-2">

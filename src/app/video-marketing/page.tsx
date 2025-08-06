@@ -7,10 +7,11 @@ import Image from 'next/image';
 import { ChevronDown } from 'react-feather';
 import { Transition } from '@headlessui/react';
 
-
-
 export default function VideoMarketing() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Your YouTube video ID - replace this with your actual video ID
+  const youtubeVideoId = "YOUR_VIDEO_ID_HERE";
 
   const videoServices = [
     {
@@ -81,7 +82,6 @@ export default function VideoMarketing() {
 
   return (
     <div className="min-h-screen flex flex-col">
-
       {/* Hero Section */}
       <motion.section 
         initial={{ opacity: 0 }}
@@ -126,11 +126,15 @@ export default function VideoMarketing() {
           className="mt-10 relative z-10"
         >
           <div className="aspect-w-16 aspect-h-9 w-full max-w-4xl mx-auto rounded-xl shadow-2xl overflow-hidden border-4 border-white">
-            <div className="bg-black w-full h-64 md:h-96 flex items-center justify-center">
-              <svg className="w-20 h-20 text-white" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M6.3 2.841A1.5 1.5 0 004 4.11v11.78a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
-              </svg>
-            </div>
+            {/* YouTube Video Embed */}
+            <iframe
+              className="w-full h-64 md:h-96"
+              src= "/video/my.mp4"
+              title="Video Marketing Showcase"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
           </div>
         </motion.div>
       </motion.section>
@@ -320,12 +324,11 @@ export default function VideoMarketing() {
               type="submit"
               className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg md:col-span-2 transition duration-300"
             >
-             <Link href="/contact">Get a Free Consultation</Link>
+              Get a Free Consultation
             </button>
           </form>
         </div>
       </section>
-
     </div>
   );
 }

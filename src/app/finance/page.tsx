@@ -142,20 +142,7 @@ export default function FinanceServiceSection() {
               </p>
             </motion.div>
 
-            {/* CTA Buttons */}
-            <motion.div
-              className="flex flex-wrap gap-4"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 1 }}
-            >
-              <button className="bg-gradient-to-r from-blue-600 to-indigo-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-indigo-600 transition-all shadow-lg hover:shadow-xl">
-                Schedule Fintech Consultation
-              </button>
-              <button className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition-colors">
-                Explore Solutions
-              </button>
-            </motion.div>
+           
           </motion.div>
 
           {/* Right Image */}

@@ -171,20 +171,7 @@ export default function EcommerceServiceSection() {
               </p>
             </motion.div>
 
-            {/* CTA Buttons */}
-            <motion.div
-              className="flex flex-col sm:flex-row gap-3 md:gap-4"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 1.1 }}
-            >
-              <button className="bg-gradient-to-r from-pink-600 to-yellow-500 text-white px-4 md:px-6 py-2 md:py-3 rounded-lg font-semibold hover:from-pink-700 hover:to-yellow-600 transition-all shadow-lg hover:shadow-xl text-sm md:text-base">
-                Get Free Consultation
-              </button>
-              <button className="border-2 border-pink-600 text-pink-600 hover:bg-pink-50 px-4 md:px-6 py-2 md:py-3 rounded-lg font-medium transition-colors text-sm md:text-base">
-                View Portfolio
-              </button>
-            </motion.div>
+            
           </motion.div>
 
           {/* Right Image */}

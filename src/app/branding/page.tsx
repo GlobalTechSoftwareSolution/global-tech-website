@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronDown } from 'react-feather';
 import { Transition } from '@headlessui/react';
+import ContactPage from '../contact/page';
 
 export default function SEOAgencyBangalore() {
   return (
@@ -42,49 +43,6 @@ export default function SEOAgencyBangalore() {
           />
         </motion.div>
 
-        {/* Form */}
-        <div className="bg-white p-8 rounded-xl shadow-md max-w-3xl mx-auto">
-          <h2 className="text-2xl font-semibold text-blue-700 mb-6 text-center">
-            ENQUIRE NOW
-          </h2>
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <input
-              type="text"
-              placeholder="Enter Your Name *"
-              className="p-3 border border-gray-300 rounded-lg focus:outline-blue-500"
-              required
-            />
-            <input
-              type="tel"
-              placeholder="Enter Mobile Number *"
-              className="p-3 border border-gray-300 rounded-lg focus:outline-blue-500"
-              required
-            />
-            <input
-              type="email"
-              placeholder="Enter Your Email Id *"
-              className="p-3 border border-gray-300 rounded-lg focus:outline-blue-500 md:col-span-2"
-              required
-            />
-            <input
-              type="text"
-              placeholder="Services"
-              className="p-3 border border-gray-300 rounded-lg focus:outline-blue-500 md:col-span-2"
-            />
-            <textarea
-              placeholder="Your Message"
-              rows={4}
-              className="p-3 border border-gray-300 rounded-lg focus:outline-blue-500 md:col-span-2"
-            ></textarea>
-            <button
-              type="submit"
-              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg md:col-span-2 transition duration-300"
-            >
-              Submit
-            </button>
-          </form>
-        </div>
-
         {/* SEO Content */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -101,7 +59,7 @@ export default function SEOAgencyBangalore() {
           </p>
         </motion.div>
       </section>
-
+      <ContactPage/>
     </div>
   );
 }

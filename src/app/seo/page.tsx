@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ChevronDown } from 'lucide-react';
 import { Transition } from '@headlessui/react';
+import ContactPage from '../contact/page';
 
 
 
@@ -68,75 +69,6 @@ export default function SEOServices() {
           />
         </motion.div>
 
-        {/* Form */}
-        <div className="bg-white p-6 md:p-8 rounded-xl shadow-md max-w-3xl mx-auto">
-          <h2 className="text-2xl font-semibold text-blue-700 mb-6 text-center">
-            ENQUIRE NOW
-          </h2>
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-            <div className="md:col-span-2">
-              <input
-                type="text"
-                name="name"
-                placeholder="Enter Your Name *"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-blue-500"
-                required
-                value={formData.name}
-                onChange={handleChange}
-              />
-            </div>
-            <div>
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Enter Mobile Number *"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-blue-500"
-                required
-                value={formData.phone}
-                onChange={handleChange}
-              />
-            </div>
-            <div>
-              <input
-                type="email"
-                name="email"
-                placeholder="Enter Your Email Id *"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-blue-500"
-                required
-                value={formData.email}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="md:col-span-2">
-              <input
-                type="text"
-                name="services"
-                placeholder="Services"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-blue-500"
-                value={formData.services}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="md:col-span-2">
-              <textarea
-                name="message"
-                placeholder="Your Message"
-                rows={4}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-blue-500"
-                value={formData.message}
-                onChange={handleChange}
-              ></textarea>
-            </div>
-            <div className="md:col-span-2">
-              <button
-                type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
-              >
-                Submit
-              </button>
-            </div>
-          </form>
-        </div>
 
         {/* SEO Content */}
         <motion.div
@@ -159,6 +91,7 @@ export default function SEOServices() {
             Professional SEO Services to Boost Website Ranking and Traffic
           </p>
         </motion.div>
+        <ContactPage/>
       </section>
 
 

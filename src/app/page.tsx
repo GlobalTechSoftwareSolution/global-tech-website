@@ -6,7 +6,8 @@ import Link from "next/link";
 import { Transition } from '@headlessui/react';
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import ContactForm from "@/components/ContactForm";
+import ContactPage from "./contact/page";
+
 
 export default function CombinedPage() {
   return (
@@ -16,7 +17,7 @@ export default function CombinedPage() {
       <DigitalMarketingSection />
       {/* <ClientsCarousel /> */}
       <BlogPost />
-      <ContactForm />
+      <ContactPage/>
     </>
   );
 }

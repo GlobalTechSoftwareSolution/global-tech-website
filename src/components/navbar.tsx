@@ -40,7 +40,7 @@ const Navbar = () => {
               <button className="flex items-center hover:text-blue-600 transition">
                 Services <ChevronDown size={16} className="ml-1" />
               </button>
-              <div className=" hidden group-hover:block mt-2 w-40 bg-white shadow-lg rounded-md z-10">
+              <div className=" hidden group-hover:block mt-16 w-40 bg-white shadow-lg rounded-md z-10">
                 <Link href="/seo" className="block px-4 py-2 hover:bg-gray-300 transition">SEO</Link>
                 <Link href="/sem" className="block px-4 py-2 hover:bg-gray-300 transition">SEM</Link>
                 <Link href="/social-media" className="block px-4 py-2 hover:bg-gray-300 transition">Social Media</Link>
