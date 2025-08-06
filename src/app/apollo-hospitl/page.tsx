@@ -7,196 +7,7 @@ import Link from 'next/link';
 import { ChevronDown } from 'lucide-react';
 import { Transition } from '@headlessui/react';
 
-function Navbar() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
 
-  return (
-    <nav className="bg-white shadow-md sticky top-0 z-50 transition duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
-          <div className="flex-shrink-0 flex items-center">
-            <Image
-              src="/logo.png"
-              alt="Company Logo"
-              width={40}
-              height={40}
-              className="mr-2"
-            />
-            <span className="text-xl font-bold text-blue-800">Global Tech Solutions</span>
-          </div>
-
-          <div className="hidden md:flex items-center space-x-6 text-gray-700 font-medium">
-            <Link href="/" className="hover:text-blue-600 transition">Home</Link>
-            <Link href="/about" className="hover:text-blue-600 transition">About Us</Link>
-
-            <div className="relative group">
-              <button className="flex items-center hover:text-blue-600 transition  ">
-                Services  <ChevronDown size={16} className="ml-1" />
-              </button>
-              <Transition
-                show={true}
-                enter="transition ease-out duration-200"
-                enterFrom="transform opacity-0 -translate-y-2"
-                enterTo="transform opacity-100 translate-y-0"
-                leave="transition ease-in duration-150"
-                leaveFrom="transform opacity-100 translate-y-0"
-                leaveTo="transform opacity-0 -translate-y-2"
-              >
-                <div className=" group-hover:block mt-2 w-48 bg-white shadow-lg rounded-md z-10">
-                  <Link href="/web-development" className="block px-4 py-2 hover:bg-gray-100 transition">Web Development</Link>
-                  <Link href="/digital-marketing" className="block px-4 py-2 hover:bg-gray-100 transition">Digital Marketing</Link>
-                  <Link href="/seo" className="block px-4 py-2 hover:bg-gray-100 transition">SEO Services</Link>
-                  <Link href="/mobile-apps" className="block px-4 py-2 hover:bg-gray-100 transition">Mobile Apps</Link>
-                </div>
-              </Transition>
-            </div>
-
-            {/* <Link href="/clients" className="text-blue-600 font-medium">Our Clients</Link> */}
-            <Link href="/contact" className="hover:text-blue-600 transition">Contact Us</Link>
-
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium transition duration-200">
-              Get a Quote
-            </button>
-          </div>
-
-          <div className="md:hidden">
-            <button 
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-gray-700 hover:text-blue-600 transition"
-            >
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                {mobileMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile menu */}
-        <Transition
-          show={mobileMenuOpen}
-          enter="transition ease-out duration-100"
-          enterFrom="transform opacity-0 scale-95"
-          enterTo="transform opacity-100 scale-100"
-          leave="transition ease-in duration-75"
-          leaveFrom="transform opacity-100 scale-100"
-          leaveTo="transform opacity-0 scale-95"
-        >
-          <div className="md:hidden mt-2 pb-3 space-y-1">
-            <Link href="/" className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100">Home</Link>
-            <Link href="/about" className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100">About Us</Link>
-            
-            <button 
-              onClick={() => setServicesOpen(!servicesOpen)}
-              className="w-full flex justify-between items-center px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100"
-            >
-              Services
-              <ChevronDown size={16} className={`transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
-            </button>
-            
-            {servicesOpen && (
-              <div className="pl-4 space-y-1">
-                <Link href="/web-development" className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100">Web Development</Link>
-                <Link href="/digital-marketing" className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100">Digital Marketing</Link>
-                <Link href="/seo" className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100">SEO Services</Link>
-                <Link href="/mobile-apps" className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100">Mobile Apps</Link>
-              </div>
-            )}
-            
-            <Link href="/clients" className="block px-3 py-2 rounded-md text-base font-medium bg-blue-50 text-blue-600">Our Clients</Link>
-            <Link href="/contact" className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100">Contact Us</Link>
-          </div>
-        </Transition>
-      </div>
-    </nav>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="bg-gray-900 text-white pt-12 pb-6 px-4 md:px-20">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
-        <div>
-          <div className="flex items-center mb-4">
-            <Image
-              src="/logo.png"
-              alt="Company Logo"
-              width={40}
-              height={40}
-              className="mr-2"
-            />
-            <span className="text-xl font-bold">Global Tech Solutions</span>
-          </div>
-          <p className="text-gray-400 mb-4">
-            Delivering cutting-edge digital solutions since 2015. We help businesses grow through innovative technology and marketing strategies.
-          </p>
-          <div className="flex space-x-4">
-            <Link href="#" className="text-gray-400 hover:text-white transition">
-              <Image src="/social/facebook.svg" alt="Facebook" width={24} height={24} />
-            </Link>
-            <Link href="#" className="text-gray-400 hover:text-white transition">
-              <Image src="/social/twitter.svg" alt="Twitter" width={24} height={24} />
-            </Link>
-            <Link href="#" className="text-gray-400 hover:text-white transition">
-              <Image src="/social/linkedin.svg" alt="LinkedIn" width={24} height={24} />
-            </Link>
-            <Link href="#" className="text-gray-400 hover:text-white transition">
-              <Image src="/social/instagram.svg" alt="Instagram" width={24} height={24} />
-            </Link>
-          </div>
-        </div>
-
-        <div>
-          <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-          <ul className="space-y-2">
-            <li><Link href="/" className="text-gray-400 hover:text-white transition">Home</Link></li>
-            <li><Link href="/about" className="text-gray-400 hover:text-white transition">About Us</Link></li>
-            <li><Link href="/services" className="text-gray-400 hover:text-white transition">Services</Link></li>
-            <li><Link href="/clients" className="text-gray-400 hover:text-white transition">Our Clients</Link></li>
-            <li><Link href="/contact" className="text-gray-400 hover:text-white transition">Contact</Link></li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="text-lg font-semibold mb-4">Services</h3>
-          <ul className="space-y-2">
-            <li><Link href="/web-development" className="text-gray-400 hover:text-white transition">Web Development</Link></li>
-            <li><Link href="/digital-marketing" className="text-gray-400 hover:text-white transition">Digital Marketing</Link></li>
-            <li><Link href="/seo" className="text-gray-400 hover:text-white transition">SEO Services</Link></li>
-            <li><Link href="/mobile-apps" className="text-gray-400 hover:text-white transition">Mobile App Development</Link></li>
-            <li><Link href="/ui-ux" className="text-gray-400 hover:text-white transition">UI/UX Design</Link></li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
-          <address className="text-gray-400 not-italic">
-            <div className="flex items-start mb-3">
-              <Image src="/icons/location.svg" alt="Location" width={18} height={18} className="mt-1 mr-2" />
-              <span>123 Tech Park, Bangalore, Karnataka 560001, India</span>
-            </div>
-            <div className="flex items-center mb-3">
-              <Image src="/icons/phone.svg" alt="Phone" width={18} height={18} className="mr-2" />
-              <a href="tel:+919876543210" className="hover:text-white">+91 98765 43210</a>
-            </div>
-            <div className="flex items-center">
-              <Image src="/icons/email.svg" alt="Email" width={18} height={18} className="mr-2" />
-              <a href="mailto:info@globaltech.com" className="hover:text-white">info@globaltech.com</a>
-            </div>
-          </address>
-        </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto border-t border-gray-800 mt-8 pt-6 text-center text-gray-400">
-        <p>© {new Date().getFullYear()} Global Tech Solutions. All rights reserved.</p>
-      </div>
-    </footer>
-  );
-}
 
 export default function ClientsPage() {
   const clients = [
@@ -255,7 +66,6 @@ export default function ClientsPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
-      <Navbar />
       
       <main className="flex-grow">
         {/* Hero Section */}
@@ -418,7 +228,6 @@ export default function ClientsPage() {
         </section>
       </main>
 
-      <Footer />
     </div>
   );
 }
