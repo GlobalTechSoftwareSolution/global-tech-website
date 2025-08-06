@@ -18,27 +18,26 @@ export default function LogoBrandingPage() {
     message: ''
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
+ const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const { name, value } = e.target;
+  setFormData(prev => ({
+    ...prev,
+    [name]: value
+  }));
+};
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log(formData);
-    alert('Thank you for your inquiry! We will contact you soon.');
-    setFormData({
-      name: '',
-      phone: '',
-      email: '',
-      service: 'Logo & Branding',
-      message: ''
-    });
-  };
+const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  // Handle form submission
+  alert('Thank you for your inquiry! We will contact you soon.');
+  setFormData({
+    name: '',
+    phone: '',
+    email: '',
+    service: 'Logo & Branding',
+    message: ''
+  });
+};
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-blue-50">

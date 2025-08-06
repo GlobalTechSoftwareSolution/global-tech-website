@@ -1,14 +1,10 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { ChevronDown } from 'react-feather';
-import { Transition } from '@headlessui/react';
+import React from 'react';
 
 
-
-export function HomePageContent() {
+export default function FeaturesPage() {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
@@ -23,46 +19,27 @@ export function HomePageContent() {
 
       {/* Services Preview */}
       <section className="py-16 px-6 max-w-7xl mx-auto">
-  <h2 className="text-3xl font-bold text-center text-blue-700 mb-12">Our Services</h2>
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-    {[
-      { 
-        name: "SEO", 
-        desc: "Search Engine Optimization services",
-        link: "/seo"
-      },
-      { 
-        name: "SEM", 
-        desc: "Search Engine Marketing solutions",
-        link: "/sem"
-      },
-      { 
-        name: "Social Media", 
-        desc: "Social media management and marketing",
-        link: "/social-media"
-      }
-    ].map((service, index) => (
-      <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-        <h3 className="text-xl font-semibold text-blue-600 mb-2">{service.name}</h3>
-        <p className="text-gray-600 mb-6">{service.desc}</p>
-        <Link
-          href={service.link}
-          className="inline-block bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded transition duration-300"
-        >
-          View Details
-        </Link>
-      </div>
-    ))}
-  </div>
-</section>
-    </main>
-  );
-}
+        <h2 className="text-3xl font-bold text-center text-blue-700 mb-12">Our Services</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            { name: "SEO", desc: "Search Engine Optimization services", link: "/seo" },
+            { name: "SEM", desc: "Search Engine Marketing solutions", link: "/sem" },
+            { name: "Social Media", desc: "Social media management and marketing", link: "/social-media" },
+          ].map((service, index) => (
+            <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-semibold text-blue-600 mb-2">{service.name}</h3>
+              <p className="text-gray-600 mb-6">{service.desc}</p>
 
-export default function Home() {
-  return (
-    <>
-      <HomePageContent />
-    </>
+              <Link
+                href={service.link}
+                className="inline-block bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded transition duration-300"
+              >
+                View Details
+              </Link>
+            </div>
+          ))}
+        </div>
+      </section>
+    </main>
   );
 }
