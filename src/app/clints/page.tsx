@@ -1,12 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ChevronDown } from 'react-feather';
-
-
 
 interface ClientCardProps {
   logo: string;
@@ -14,6 +11,7 @@ interface ClientCardProps {
   description: string;
   image?: string;
   delay?: number;
+  website?: string;
 }
 
 const ClientCard: React.FC<ClientCardProps> = ({ 
@@ -21,7 +19,8 @@ const ClientCard: React.FC<ClientCardProps> = ({
   name, 
   description, 
   image, 
-  delay = 0 
+  delay = 0,
+  website
 }) => {
   return (
     <motion.div
@@ -55,46 +54,39 @@ const ClientCard: React.FC<ClientCardProps> = ({
           />
         </div>
       )}
+      {website && (
+        <a
+          href={website}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded transition duration-300"
+        >
+          Learn More
+        </a>
+      )}
     </motion.div>
   );
 };
+
 export default function ClientsPage() {
   const clients = [
     {
-      logo: "/logos/apollo-bangalore.png",
-      name: "Apollo Hospitals",
-      description: "We partnered with Apollo to deliver a high-performance healthcare website tailored for accessibility, patient trust, and seamless experience. Our solution improved patient engagement by 40% and reduced bounce rates by 35%.",
-      image: "/projects/apollo-preview.jpg"
+      logo: "/logo/namma.png",
+      name: "Namma Uru Namma Hemme",
+      description: "We developed a modern, user-friendly platform for Namma Uru Namma Hemme to promote local heritage, culture, and community initiatives with high engagement and accessibility.",
+      website: "https://namma-uru-namma-hemme.netlify.app/" // replace with actual site
     },
     {
-      logo: "/logos/apollo-telehealth.png",
-      name: "Apollo TeleHealth",
-      description: "Apollo TeleHealth partnered with us to modernize their digital presence and enhance virtual patient care through secure and responsive web platforms. The new system handles 5000+ daily consultations with 99.9% uptime.",
-      image: "/projects/apollo-tele-preview.jpg"
+      logo: "/logo/fincare.jpg",
+      name: "Global Fincare",
+      description: "Our team created a secure and scalable financial solutions platform for Global Fincare, enabling smooth transactions, client trust, and compliance with regulatory standards.",
+      website: "https://www.globalfincare.in/" // replace with actual site
     },
     {
-      logo: "/logos/fortis.png",
-      name: "Fortis Healthcare",
-      description: "Fortis Healthcare trusted us to redesign their patient portal, resulting in a 50% increase in online appointment bookings and improved patient satisfaction scores.",
-      image: "/projects/fortis-preview.jpg"
-    },
-    {
-      logo: "/logos/manipal.png",
-      name: "Manipal Hospitals",
-      description: "We developed a custom CMS solution for Manipal Hospitals that streamlined their content management process, reducing update times from hours to minutes.",
-      image: "/projects/manipal-preview.jpg"
-    },
-    {
-      logo: "/logos/narayana.png",
-      name: "Narayana Health",
-      description: "Narayana Health partnered with us for their digital transformation, implementing AI-powered chatbots that reduced call center volume by 30% while improving patient query resolution.",
-      image: "/projects/narayana-preview.jpg"
-    },
-    {
-      logo: "/logos/aster.png",
-      name: "Aster DM Healthcare",
-      description: "Our team created a multilingual platform for Aster DM Healthcare that expanded their reach across Middle Eastern and Indian markets, resulting in a 25% increase in international patients.",
-      image: "/projects/aster-preview.jpg"
+      logo: "/logo/harvest.png",
+      name: "Farm Harvest to Home",
+      description: "We built an e-commerce and logistics platform for Farm Harvest to Home, connecting farmers directly to consumers, improving efficiency and ensuring fresh produce delivery.",
+      website: "https://farmharvesttohome.com/" // replace with actual site
     }
   ];
 
@@ -111,7 +103,7 @@ export default function ClientsPage() {
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Valued Clients</h1>
           <p className="text-xl md:text-2xl mb-8">
-            Trusted by leading organizations across healthcare, technology, and enterprise sectors
+            Trusted by leading organizations across multiple sectors
           </p>
           <motion.div
             whileHover={{ scale: 1.05 }}
@@ -137,10 +129,10 @@ export default function ClientsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Our Healthcare Partners
+            Our Clients
           </motion.h2>
           <p className="text-gray-600 mt-2 max-w-2xl mx-auto">
-            We've helped some of the biggest names in healthcare transform their digital presence, improve patient engagement, and streamline operations.
+            We are proud to work with forward-thinking brands that trust us to deliver innovative solutions tailored to their vision.
           </p>
         </div>
 
@@ -151,66 +143,10 @@ export default function ClientsPage() {
               logo={client.logo}
               name={client.name}
               description={client.description}
-              image={client.image}
+              website={client.website}
               delay={index * 0.1}
             />
           ))}
-        </div>
-
-        {/* Testimonials Section */}
-        <div className="mt-20 max-w-4xl mx-auto">
-          <h3 className="text-2xl md:text-3xl font-bold text-center text-blue-800 mb-12">
-            What Our Clients Say
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="bg-gray-50 p-6 rounded-lg shadow"
-            >
-              <div className="flex items-center mb-4">
-                <Image
-                  src="/testimonials/testimonial1.jpg"
-                  alt="Dr. Ramesh Kumar"
-                  width={60}
-                  height={60}
-                  className="rounded-full mr-4"
-                />
-                <div>
-                  <h4 className="font-bold">Dr. Ramesh Kumar</h4>
-                  <p className="text-gray-600 text-sm">CMO, Apollo Hospitals</p>
-                </div>
-              </div>
-              <p className="text-gray-700 italic">
-                &quot;Global Tech transformed our digital presence completely. Their team understood our needs as a healthcare provider and delivered a solution that improved both patient experience and operational efficiency.&quot;
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-gray-50 p-6 rounded-lg shadow"
-            >
-              <div className="flex items-center mb-4">
-                <Image
-                  src="/testimonials/testimonial2.jpg"
-                  alt="Priya Sharma"
-                  width={60}
-                  height={60}
-                  className="rounded-full mr-4"
-                />
-                <div>
-                  <h4 className="font-bold">Priya Sharma</h4>
-                  <p className="text-gray-600 text-sm">Digital Head, Fortis Healthcare</p>
-                </div>
-              </div>
-              <p className="text-gray-700 italic">
-                &quot;Working with Global Tech was a game-changer for our telehealth services. Their technical expertise and healthcare domain knowledge made all the difference in our digital transformation journey.&quot;
-              </p>
-            </motion.div>
-          </div>
         </div>
 
         {/* CTA Section */}

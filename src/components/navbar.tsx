@@ -7,8 +7,8 @@ import { ChevronDown } from 'lucide-react';
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [mobileContactOpen, setMobileContactOpen] = useState(false);
 
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50 transition duration-300">
@@ -40,14 +40,30 @@ const Navbar = () => {
               <button className="flex items-center hover:text-blue-600 transition">
                 Services <ChevronDown size={16} className="ml-1" />
               </button>
-              <div className=" hidden group-hover:block mt-16 w-40 bg-white shadow-lg rounded-md z-10">
+              <div className="hidden group-hover:block mt-16 w-40 bg-white shadow-lg rounded-md z-10">
                 <Link href="/seo" className="block px-4 py-2 hover:bg-gray-300 transition">SEO</Link>
                 <Link href="/sem" className="block px-4 py-2 hover:bg-gray-300 transition">SEM</Link>
                 <Link href="/social-media" className="block px-4 py-2 hover:bg-gray-300 transition">Social Media</Link>
               </div>
             </div>
 
+
+            <Link href="/clints" className="hover:text-blue-600 transition">Our Clients</Link>
             <Link href="/contact" className="hover:text-blue-600 transition">Contact Us</Link>
+
+            {/* Call Us Button */}
+            <a href="tel:+919844281875">
+              <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200">
+                Call Us 📞
+              </button>
+            </a>
+
+            {/* Request Quote Button */}
+            <Link href="/contact">
+              <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200">
+                Request For a Quote 📋
+              </button>
+            </Link>
           </div>
 
           {/* Hamburger Icon */}
@@ -70,8 +86,12 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden mt-4 space-y-2 px-4 pb-4 text-gray-700 font-medium">
-            <Link href="/" className="block hover:text-blue-600">Home</Link>
-            <Link href="/about" className="block hover:text-blue-600">About us</Link>
+            <Link href="/" onClick={() => setMobileMenuOpen(false)} className="block hover:text-blue-600">Home</Link>
+
+            <Link href="/about" onClick={() => setMobileMenuOpen(false)} className="block hover:text-blue-600">About Us</Link>
+
+            <Link href="/clients" onClick={() => setMobileMenuOpen(false)} className="block hover:text-blue-600">Our Clients</Link>
+
 
             {/* Mobile Services Dropdown */}
             <div>
@@ -83,14 +103,36 @@ const Navbar = () => {
               </button>
               {mobileServicesOpen && (
                 <div className="mt-2 w-40 bg-white shadow-lg rounded-md z-10">
-                  <Link href="/seo" className="block px-4 py-2 hover:bg-gray-300 transition">SEO</Link>
-                  <Link href="/sem" className="block px-4 py-2 hover:bg-gray-300 transition">SEM</Link>
-                  <Link href="/social-media" className="block px-4 py-2 hover:bg-gray-300 transition">Social Media</Link>
+                  <Link href="/seo" onClick={() => { setMobileMenuOpen(false); setMobileServicesOpen(false); }} className="block px-4 py-2 hover:bg-gray-300 transition">SEO</Link>
+                  <Link href="/sem" onClick={() => { setMobileMenuOpen(false); setMobileServicesOpen(false); }} className="block px-4 py-2 hover:bg-gray-300 transition">SEM</Link>
+                  <Link href="/social-media" onClick={() => { setMobileMenuOpen(false); setMobileServicesOpen(false); }} className="block px-4 py-2 hover:bg-gray-300 transition">Social Media</Link>
                 </div>
               )}
             </div>
 
-            <Link href="/contact" className="block hover:text-blue-600">Contact Us</Link>
+            {/* Mobile Contact Dropdown */}
+            <div>
+              <button
+                onClick={() => setMobileContactOpen(!mobileContactOpen)}
+                className="flex items-center hover:text-blue-600 transition w-full"
+              >
+                Contact <ChevronDown size={16} className="ml-1" />
+              </button>
+              {mobileContactOpen && (
+                <div className="mt-2 w-50 bg-white shadow-lg rounded-md z-10 justify-between">
+                  <a href="tel:+919844281875">
+                    <button className="bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200 w-full">
+                      Call Us 📞
+                    </button>
+                  </a>
+                  <Link href="/contact">
+                    <button className="bg-orange-400 mt-3 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transform hover:scale-105 transition duration-200 w-full">
+                      Request For a Quote 📋
+                    </button>
+                  </Link>
+                </div>
+              )}
+            </div>
           </div>
         )}
       </div>

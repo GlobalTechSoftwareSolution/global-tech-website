@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronDown } from 'react-feather';
 import { Transition } from '@headlessui/react';
+import ContactPage from '../contact/page';
 
 export default function VideoMarketing() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -284,51 +285,7 @@ export default function VideoMarketing() {
         </motion.div>
       </section>
 
-      {/* Contact Form */}
-      <section className="py-16 px-6 md:px-20 bg-gray-50">
-        <div className="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-md">
-          <h2 className="text-2xl font-semibold text-blue-700 mb-6 text-center">
-            Ready to Elevate Your Brand with Video?
-          </h2>
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <input
-              type="text"
-              placeholder="Your Name *"
-              className="p-3 border border-gray-300 rounded-lg focus:outline-blue-500"
-              required
-            />
-            <input
-              type="tel"
-              placeholder="Phone Number *"
-              className="p-3 border border-gray-300 rounded-lg focus:outline-blue-500"
-              required
-            />
-            <input
-              type="email"
-              placeholder="Email Address *"
-              className="p-3 border border-gray-300 rounded-lg focus:outline-blue-500 md:col-span-2"
-              required
-            />
-            <select className="p-3 border border-gray-300 rounded-lg focus:outline-blue-500 md:col-span-2">
-              <option value="">Select Service</option>
-              {videoServices.map((service, index) => (
-                <option key={index} value={service.title}>{service.title}</option>
-              ))}
-            </select>
-            <textarea
-              placeholder="Tell us about your project"
-              rows={4}
-              className="p-3 border border-gray-300 rounded-lg focus:outline-blue-500 md:col-span-2"
-            ></textarea>
-            <button
-              type="submit"
-              className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg md:col-span-2 transition duration-300"
-            >
-              Get a Free Consultation
-            </button>
-          </form>
-        </div>
-      </section>
+      <ContactPage/>
     </div>
   );
 }

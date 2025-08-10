@@ -46,6 +46,8 @@ const Footer = () => {
               </span>
             </div>
           </div>
+
+
         </div>
 
         {/* Pages */}
@@ -58,8 +60,6 @@ const Footer = () => {
             <li>
               <Link href="/about" className="hover:text-white">About</Link>
             </li>
-            
-           
             <li>
               <Link href="/contact" className="hover:text-white">Contact</Link>
             </li>
@@ -82,6 +82,22 @@ const Footer = () => {
           >
             CLICK HERE
           </Link>
+
+                   {/* Social Media Icons */}
+<div className="flex gap-4 mt-10 items-center justify-center">
+  <Link href="https://instagram.com/yourpage" target="_blank" rel="noopener noreferrer">
+    <Image src="/icons/instagram.png" alt="Instagram" width={24} height={24} />
+  </Link>
+  <Link href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
+    <Image src="/icons/linkedin.png" alt="LinkedIn" width={24} height={24} />
+  </Link>
+  <Link href="https://facebook.com/yourpage" target="_blank" rel="noopener noreferrer">
+    <Image src="/icons/facebook.png" alt="Facebook" width={24} height={24} />
+  </Link>
+  <Link href="https://youtube.com/yourchannel" target="_blank" rel="noopener noreferrer">
+    <Image src="/icons/youtube.png" alt="YouTube" width={24} height={24} />
+  </Link>
+</div>
         </div>
       </div>
 
