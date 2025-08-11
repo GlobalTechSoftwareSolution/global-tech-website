@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0d0d0d] text-white py-10 px-6 md:px-20">
+    <footer className="bg-[#EDE8DC] text-black py-10 px-6 md:px-20">
       <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 border-b border-gray-700 pb-10">
         
         {/* Logo & Contact */}
@@ -19,24 +19,25 @@ const Footer = () => {
           <h3 className="font-semibold text-lg mb-1 uppercase leading-relaxed">
             GLOBAL TECH SOFTWARE SOLUTION
           </h3>
-          <p className="text-center text-xs md:text-sm font-medium text-gray-400 italic tracking-wide mb-4">
+          <p className="text-center text-xs md:text-sm font-medium text-black italic tracking-wide mb-4">
             "MORE THAN A SERVICE - A SOLUTION"
           </p>
 
-          <div className="space-y-3 text-sm text-gray-300">
+          <div className="space-y-3 text-sm text-black">
             <div className="flex items-center gap-2">
               <Image src="/icons/phone.png" alt="Phone" width={20} height={20} />
-              <a href="tel:+919844281875" className="hover:text-white">
+              <a href="tel:+919844281875" className="hover:text-black">
                 +91-9844281875
               </a>
             </div>
             <div className="flex items-center gap-2">
               <Image src="/icons/email.png" alt="Email" width={20} height={20} />
               <a
-                href="mailto:hrglobaltechsoftwaresolutions@gmail.com"
-                className="hover:text-white"
+                href="mailto:tech@globaltechsoftwaresolutions.com"
+                className="hover:text-black"
               >
-                hrglobaltechsoftwaresolutions@gmail.com
+                tech@globaltechsoftwaresolutions.com
+
               </a>
             </div>
             <div className="flex items-start gap-2">
@@ -52,33 +53,33 @@ const Footer = () => {
 
         {/* Pages */}
         <div>
-          <h4 className="text-lg font-bold text-white mb-4 uppercase">Visit</h4>
-          <ul className="space-y-2 text-gray-300">
+          <h4 className="text-lg font-bold text-black mb-4 uppercase">Visit</h4>
+          <ul className="space-y-2 text-black">
             <li>
-              <Link href="/" className="hover:text-white">Home</Link>
+              <Link href="/" className="hover:text-black">Home</Link>
             </li>
             <li>
-              <Link href="/about" className="hover:text-white">About</Link>
+              <Link href="/about" className="hover:text-black">About</Link>
             </li>
             <li>
-              <Link href="/contact" className="hover:text-white">Contact</Link>
+              <Link href="/contact" className="hover:text-black">Contact</Link>
             </li>
           </ul>
         </div>
 
         {/* Work Hours */}
         <div>
-          <h4 className="text-lg font-bold text-white mb-4 uppercase">Work Hours</h4>
-          <div className="flex items-center gap-2 text-gray-300 mb-2">
+          <h4 className="text-lg font-bold text-black mb-4 uppercase">Work Hours</h4>
+          <div className="flex items-center gap-2 text-black mb-2">
             <Image src="/icons/time.png" alt="Clock" width={20} height={20} />
             <span>Mon–Sat 10:00 AM–06:00 PM</span>
           </div>
-          <p className="text-gray-400 mb-4">
+          <p className="text-black mb-4">
             Visit our office to get a free consultation
           </p>
           <Link
             href="/contact"
-            className="inline-block bg-orange-600 hover:bg-orange-700 text-white py-2 px-4 rounded"
+            className="inline-block bg-orange-600 hover:bg-orange-700 text-black py-2 px-4 rounded"
           >
             CLICK HERE
           </Link>

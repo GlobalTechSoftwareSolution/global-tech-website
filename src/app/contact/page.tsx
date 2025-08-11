@@ -165,8 +165,8 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-medium text-gray-800">Email</h3>
-                      <a href="mailto:contact@vmsoftsys.com" className="text-blue-600 hover:text-blue-800">
-                        hrglobaltechsoftwaresolutions@gmail.com
+                      <a href="mailto:tech@globaltechsoftwaresolutions.com" className="text-blue-600 hover:text-blue-800">
+                        tech@globaltechsoftwaresolutions.com
                       </a>
                     </div>
                   </div>
