@@ -90,7 +90,7 @@ const Navbar = () => {
 
             <Link href="/about" onClick={() => setMobileMenuOpen(false)} className="block hover:text-blue-600">About Us</Link>
 
-            <Link href="/clients" onClick={() => setMobileMenuOpen(false)} className="block hover:text-blue-600">Our Clients</Link>
+            <Link href="/clints" onClick={() => setMobileMenuOpen(false)} className="block hover:text-blue-600">Our Clients</Link>
 
 
             {/* Mobile Services Dropdown */}
