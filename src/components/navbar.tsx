@@ -33,7 +33,7 @@ const Navbar = () => {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-6 text-gray-700 font-medium">
             <Link href="/" className="hover:text-blue-600 transition">Home</Link>
-            <Link href="/about" className="hover:text-blue-600 transition">About Us</Link>
+            <Link href="/about-us" className="hover:text-blue-600 transition">About Us</Link>
 
             {/* Desktop Services Dropdown */}
             <div className="relative group">
@@ -88,7 +88,7 @@ const Navbar = () => {
           <div className="md:hidden mt-4 space-y-2 px-4 pb-4 text-gray-700 font-medium">
             <Link href="/" onClick={() => setMobileMenuOpen(false)} className="block hover:text-blue-600">Home</Link>
 
-            <Link href="/about" onClick={() => setMobileMenuOpen(false)} className="block hover:text-blue-600">About Us</Link>
+            <Link href="/about-us" onClick={() => setMobileMenuOpen(false)} className="block hover:text-blue-600">About Us</Link>
 
             <Link href="/clints" onClick={() => setMobileMenuOpen(false)} className="block hover:text-blue-600">Our Clients</Link>
 
