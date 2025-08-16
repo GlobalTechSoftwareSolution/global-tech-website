@@ -59,24 +59,6 @@ function DigitalAgencySection() {
             </p>
           </div>
         </div>
-
-        {/* <div className="flex gap-4">
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            href="#services"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md shadow-md transition duration-300"
-          >
-            🔍 Our Services
-          </motion.a>
-
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            href="#proposal"
-            className="border border-blue-600 text-blue-700 hover:bg-blue-50 px-6 py-3 rounded-md shadow-md transition duration-300"
-          >
-            📝 Get Proposal
-          </motion.a>
-        </div> */}
       </motion.div>
     </section>
   );
