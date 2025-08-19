@@ -1,12 +1,11 @@
 'use client';
 
 import React, { useState, useRef, useEffect, useCallback } from "react";
-import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
-import { Transition } from '@headlessui/react';
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import ContactPage from "./contact/page";
+import Button from '@/app/button/page';
 
 
 export default function CombinedPage() {
@@ -15,8 +14,8 @@ export default function CombinedPage() {
       <DesignShowcaseSection />
       <ServicesSection />
       <DigitalMarketingSection />
-      {/* <ClientsCarousel /> */}
       <BlogPost />
+      <Button />
       <ContactPage/>
     </>
   );

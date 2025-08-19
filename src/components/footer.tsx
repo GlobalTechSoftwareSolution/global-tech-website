@@ -64,6 +64,9 @@ const Footer = () => {
             <li>
               <Link href="/contact" className="hover:text-black">Contact</Link>
             </li>
+            <li>
+              <Link href="/clints" className="hover:text-black">Services</Link>
+            </li>
           </ul>
         </div>
 
@@ -84,36 +87,21 @@ const Footer = () => {
             CLICK HERE
           </Link>
 
-                   {/* Social Media Icons */}
-<div className="flex gap-4 mt-10 items-center justify-center">
-  <Link href="https://www.instagram.com/globaltechsoftwaresolutions00/?next=%2F" target="_blank" rel="noopener noreferrer">
-    <Image src="/icons/instagram.png" alt="Instagram" width={24} height={24} />
-  </Link>
-  
-  <Link href="https://www.facebook.com/profile.php?id=61576624472044" target="_blank" rel="noopener noreferrer">
-    <Image src="/icons/facebook.png" alt="Facebook" width={24} height={24} />
-  </Link>
-  <Link href="https://www.youtube.com/@Globaltech-softwaresolutions" target="_blank" rel="noopener noreferrer">
-    <Image src="/icons/youtube.png" alt="YouTube" width={24} height={24} />
-  </Link>
-</div>
+            {/* Social Media Icons */}
+              <div className="flex gap-4 mt-10 items-center justify-center">
+                <Link href="https://www.instagram.com/globaltechsoftwaresolutions00/?next=%2F" target="_blank" rel="noopener noreferrer">
+                  <Image src="/icons/instagram.png" alt="Instagram" width={24} height={24} />
+                </Link>
+                
+                <Link href="https://www.facebook.com/profile.php?id=61576624472044" target="_blank" rel="noopener noreferrer">
+                  <Image src="/icons/facebook.png" alt="Facebook" width={24} height={24} />
+                </Link>
+                <Link href="https://www.youtube.com/@Globaltech-softwaresolutions" target="_blank" rel="noopener noreferrer">
+                  <Image src="/icons/youtube.png" alt="YouTube" width={24} height={24} />
+                </Link>
+              </div>
         </div>
       </div>
-
-      {/* WhatsApp Floating Button */}
-      <Link
-        href="https://wa.me/9844281875"
-        className="fixed bottom-7 right-3 rounded-full shadow-lg z-50 mr-5"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Image
-          src="/logo/whatsapp.png"
-          alt="WhatsApp"
-          width={48}
-          height={48}
-        />
-      </Link>
     </footer>
   );
 };
