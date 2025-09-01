@@ -1,5 +1,7 @@
 "use client"
 import { useState, useRef, FormEvent, useEffect } from "react"
+import emailjs from "@emailjs/browser"
+import { FaCheckCircle, FaExclamationCircle, FaTimes, FaPaperPlane } from "react-icons/fa"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -10,11 +12,10 @@ export default function ContactPage() {
     message: ""
   })
 
-  const [popup, setPopup] = useState<{ show: boolean; message: string; type: "success" | "error" }>({
-    show: false,
-    message: "",
-    type: "success"
-  })
+  const [isLoading, setIsLoading] = useState(false)
+  const [popup, setPopup] = useState<{ show: boolean; message: string; type: "success" | "error" }>(
+    { show: false, message: "", type: "success" }
+  )
 
   const form = useRef<HTMLFormElement>(null)
 
@@ -25,47 +26,68 @@ export default function ContactPage() {
     setFormData(prev => ({ ...prev, [name]: value }))
   }
 
-  // ✅ WhatsApp Redirect
-  const sendToWhatsApp = (e: FormEvent<HTMLFormElement>) => {
+  // ✅ Send with EmailJS
+  const sendEmail = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    if (!form.current) return
+    
+    setIsLoading(true)
 
-    const { name, phone, email, service, message } = formData
-    const yourNumber = "919844281875"
-
-    const text = `Hello, I want to get in touch.%0A
-Name: ${name}%0A
-Phone: ${phone}%0A
-Email: ${email}%0A
-Service: ${service}%0A
-Message: ${message}`
-
-    const url = `https://wa.me/${yourNumber}?text=${text}`
-
-    window.open(url, "_blank")
-
-    setPopup({
-      show: true,
-      message: "✅ Opening WhatsApp...",
-      type: "success"
-    })
-
-    setFormData({ name: "", phone: "", email: "", service: "", message: "" })
+    emailjs
+      .sendForm(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string,
+        form.current,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string
+      )
+      .then(() => {
+        setPopup({
+          show: true,
+          message: "Thank you for your message! We'll get back to you within 24 hours.",
+          type: "success"
+        })
+        setFormData({ name: "", phone: "", email: "", service: "", message: "" })
+      })
+      .catch((error) => {
+        console.error("EmailJS error:", error)
+        setPopup({
+          show: true,
+          message: "We apologize, but there was an error sending your message. Please try again or contact us directly.",
+          type: "error"
+        })
+      })
+      .finally(() => {
+        setIsLoading(false)
+      })
   }
 
   useEffect(() => {
     if (popup.show) {
       const timer = setTimeout(() => {
         setPopup(prev => ({ ...prev, show: false }))
-      }, 4000)
+      }, 6000)
       return () => clearTimeout(timer)
     }
   }, [popup.show])
 
+  const closePopup = () => {
+    setPopup(prev => ({ ...prev, show: false }))
+  }
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 py-12 px-4">
+      {/* Page Title */}
+      <div className="text-center mb-8">
+        <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          Contact <span className="text-blue-500">Global Tech Software Solutions</span>
+        </h1>
+        <p className="text-gray-600 max-w-2xl mx-auto">
+          Get in touch with us for any inquiries about our services. We're here to help you grow your business.
+        </p>
+      </div>
 
       {/* Contact Form */}
-      <div className="bg-white/95 backdrop-blur-lg p-10 rounded-2xl shadow-2xl relative w-full max-w-2xl border border-yellow-400 hover:shadow-yellow-500/50 transition duration-500">
+      <div className="bg-white/95 backdrop-blur-lg p-8 md:p-10 rounded-2xl shadow-2xl relative w-full max-w-2xl border border-yellow-400 hover:shadow-yellow-500/50 transition duration-500">
         <div className="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-yellow-400 via-orange-400 to-red-500 rounded-b-2xl"></div>
 
         <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-6 text-center">
@@ -74,97 +96,211 @@ Message: ${message}`
           </span>
         </h2>
 
-        <form ref={form} onSubmit={sendToWhatsApp} className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <form ref={form} onSubmit={sendEmail} className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {/* Name */}
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            className="w-full p-3 border border-gray-300 rounded-lg text-base placeholder:text-gray-400 focus:ring-2 focus:ring-yellow-500 outline-none col-span-2 md:col-span-1"
-          />
+          <div className="col-span-2 md:col-span-1">
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+              Name *
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Your Name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              className="w-full p-3 border border-gray-300 rounded-lg text-base placeholder:text-gray-400 focus:ring-2 focus:ring-yellow-500 outline-none transition-colors"
+            />
+          </div>
 
           {/* Phone */}
-          <input
-            type="tel"
-            name="phone"
-            placeholder="Phone *"
-            value={formData.phone}
-            onChange={handleChange}
-            required
-            className="w-full p-3 border border-gray-300 rounded-lg text-base placeholder:text-gray-400 focus:ring-2 focus:ring-yellow-500 outline-none col-span-2 md:col-span-1"
-          />
+          <div className="col-span-2 md:col-span-1">
+            <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+              Phone *
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="Phone Number"
+              value={formData.phone}
+              onChange={handleChange}
+              required
+              className="w-full p-3 border border-gray-300 rounded-lg text-base placeholder:text-gray-400 focus:ring-2 focus:ring-yellow-500 outline-none transition-colors"
+            />
+          </div>
 
           {/* Email */}
-          <input
-            type="email"
-            name="email"
-            placeholder="Email Address"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            className="w-full p-3 border border-gray-300 rounded-lg text-base placeholder:text-gray-400 focus:ring-2 focus:ring-yellow-500 outline-none col-span-2"
-          />
+          <div className="col-span-2">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              Email Address *
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email Address"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              className="w-full p-3 border border-gray-300 rounded-lg text-base placeholder:text-gray-400 focus:ring-2 focus:ring-yellow-500 outline-none transition-colors"
+            />
+          </div>
 
-          {/* ✅ Services Dropdown */}
-          <select
-            name="service"
-            value={formData.service}
-            onChange={handleChange}
-            required
-            className="w-full p-3 border border-gray-300 rounded-lg text-base text-gray-700 focus:ring-2 focus:ring-yellow-500 outline-none col-span-2"
-          >
-            <option value="">-- Select Service --</option>
-            <option value="SEO">SEO (Search Engine Optimization)</option>
-            <option value="SEM">SEM (Search Engine Marketing)</option>
-            <option value="Social Media">Social Media Marketing</option>
-          </select>
+          {/* Services Dropdown */}
+          <div className="col-span-2">
+            <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1">
+              Service Interested In *
+            </label>
+            <select
+              id="service"
+              name="service"
+              value={formData.service}
+              onChange={handleChange}
+              required
+              className="w-full p-3 border border-gray-300 rounded-lg text-base text-gray-700 focus:ring-2 focus:ring-yellow-500 outline-none transition-colors"
+            >
+              <option value="">-- Select Service --</option>
+              <option value="SEO">SEO (Search Engine Optimization)</option>
+              <option value="SEM">SEM (Search Engine Marketing)</option>
+              <option value="Social Media">Social Media Marketing</option>
+              <option value="Web Development">Web Development</option>
+              <option value="App Development">App Development</option>
+            </select>
+          </div>
 
           {/* Message */}
-          <textarea
-            name="message"
-            placeholder="Your Message"
-            value={formData.message}
-            onChange={handleChange}
-            rows={4}
-            required
-            className="w-full p-3 border border-gray-300 rounded-lg text-base placeholder:text-gray-400 focus:ring-2 focus:ring-yellow-500 outline-none col-span-2"
-          ></textarea>
+          <div className="col-span-2">
+            <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+              Message *
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Tell us about your project or inquiry..."
+              value={formData.message}
+              onChange={handleChange}
+              rows={5}
+              required
+              className="w-full p-3 border border-gray-300 rounded-lg text-base placeholder:text-gray-400 focus:ring-2 focus:ring-yellow-500 outline-none transition-colors resize-vertical"
+            ></textarea>
+          </div>
 
           {/* Submit Button */}
-          <button
-            type="submit"
-            className="col-span-2 flex items-center justify-center gap-2 bg-gradient-to-r from-green-500 via-green-600 to-green-700 text-white font-semibold py-3 rounded-lg shadow-md hover:scale-105 transition duration-300"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="22"
-              height="22"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="text-white"
+          <div className="col-span-2">
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-green-500 via-green-600 to-green-700 text-white font-semibold py-3 rounded-lg shadow-md hover:scale-[1.02] transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              <path d="M20.52 3.48A11.87 11.87 0 0 0 12 .1C5.52.1.1 5.52.1 12c0 2.11.55 4.18 1.61 6.01L0 24l6.2-1.62A11.9 11.9 0 0 0 12 23.9c6.48 0 11.9-5.42 11.9-11.9 0-3.18-1.24-6.18-3.48-8.52zm-8.52 18.4c-2.06 0-4.08-.55-5.86-1.59l-.42-.25-3.69.96.99-3.59-.27-.43a9.86 9.86 0 0 1-1.52-5.32c0-5.46 4.44-9.9 9.9-9.9 2.65 0 5.15 1.03 7.03 2.91 1.88 1.88 2.91 4.38 2.91 7.03 0 5.46-4.44 9.9-9.9 9.9zm5.43-7.39c-.3-.15-1.78-.88-2.05-.98-.28-.1-.48-.15-.68.15-.2.3-.78.98-.95 1.18-.18.2-.35.23-.65.08-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.77-1.67-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.68-1.63-.93-2.23-.24-.58-.49-.5-.68-.5h-.58c-.2 0-.53.08-.8.38-.28.3-1.05 1.03-1.05 2.5s1.08 2.91 1.23 3.11c.15.2 2.13 3.26 5.16 4.57.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.78-.73 2.03-1.43.25-.7.25-1.3.18-1.43-.08-.15-.27-.23-.58-.38z" />
-            </svg>
-            SUBMIT
-          </button>
+              {isLoading ? (
+                <>
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                  Sending...
+                </>
+              ) : (
+                <>
+                  <FaPaperPlane className="text-sm" />
+                  Send Message
+                </>
+              )}
+            </button>
+          </div>
         </form>
       </div>
 
-      {/* Popup */}
+      {/* Professional Popup Notification */}
       {popup.show && (
-        <div
-          className={`fixed bottom-6 right-6 px-6 py-3 rounded-lg shadow-xl text-white font-medium animate-bounce transition-opacity duration-500 ${
-            popup.type === "success"
-              ? "bg-gradient-to-r from-green-400 to-green-600"
-              : "bg-gradient-to-r from-red-400 to-red-600"
-          }`}
-        >
-          {popup.message}
+        <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300"
+            onClick={closePopup}
+          ></div>
+          
+          {/* Notification Card */}
+          <div className="relative bg-white rounded-xl shadow-2xl max-w-md w-full overflow-hidden transform transition-all duration-300 scale-95 animate-scale-in">
+            {/* Header with gradient */}
+            <div className={`h-2 w-full ${popup.type === "success" ? 'bg-gradient-to-r from-green-400 to-green-600' : 'bg-gradient-to-r from-red-400 to-red-600'}`}></div>
+            
+            {/* Content */}
+            <div className="p-6">
+              <div className="flex items-start">
+                {/* Icon */}
+                <div className={`flex-shrink-0 h-10 w-10 rounded-full flex items-center justify-center ${popup.type === "success" ? 'bg-green-100' : 'bg-red-100'}`}>
+                  {popup.type === "success" ? (
+                    <FaCheckCircle className="h-6 w-6 text-green-600" />
+                  ) : (
+                    <FaExclamationCircle className="h-6 w-6 text-red-600" />
+                  )}
+                </div>
+                
+                {/* Message */}
+                <div className="ml-4">
+                  <h3 className={`text-lg font-semibold ${popup.type === "success" ? 'text-green-800' : 'text-red-800'}`}>
+                    {popup.type === "success" ? 'Message Sent Successfully' : 'Something Went Wrong'}
+                  </h3>
+                  <p className="mt-1 text-gray-600">{popup.message}</p>
+                </div>
+                
+                {/* Close Button */}
+                <button
+                  onClick={closePopup}
+                  className="ml-4 flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full hover:bg-gray-100 transition-colors"
+                >
+                  <FaTimes className="h-4 w-4 text-gray-500" />
+                </button>
+              </div>
+              
+              {/* Progress Bar */}
+              <div className="mt-4">
+                <div className="h-1 w-full bg-gray-200 rounded-full overflow-hidden">
+                  <div 
+                    className={`h-full ${popup.type === "success" ? 'bg-green-500' : 'bg-red-500'} transition-all duration-5000 ease-linear`}
+                    style={{ animation: 'shrink 5s linear forwards' }}
+                  ></div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Action Button */}
+            <div className="px-6 py-4 bg-gray-50 flex justify-end">
+              <button
+                onClick={closePopup}
+                className={`px-4 py-2 rounded-lg font-medium ${popup.type === "success" ? 'bg-green-600 hover:bg-green-700' : 'bg-red-600 hover:bg-red-700'} text-white transition-colors`}
+              >
+                Continue
+              </button>
+            </div>
+          </div>
         </div>
       )}
+
+      {/* Animation Styles */}
+      <style jsx global>{`
+        @keyframes scaleIn {
+          0% {
+            transform: scale(0.9);
+            opacity: 0;
+          }
+          100% {
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
+        @keyframes shrink {
+          0% {
+            width: 100%;
+          }
+          100% {
+            width: 0%;
+          }
+        }
+        .animate-scale-in {
+          animation: scaleIn 0.3s ease-out forwards;
+        }
+      `}</style>
     </div>
   )
 }
