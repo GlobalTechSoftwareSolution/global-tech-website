@@ -23,10 +23,10 @@ const Footer = () => {
             "MORE THAN A SERVICE - A SOLUTION"
           </p>
 
-          <div className="space-y-3 text-sm text-white">
-            <div className="flex items-center gap-2 text-white">
+          <div className="space-y-3 text-sm text-gray-700">
+            <div className="flex items-center gap-2 text-gray-700">
               <Image src="/icons/phone.png" alt="Phone" width={20} height={20} />
-              <a href="tel:+919844281875" className="hover:text-white">
+              <a href="tel:+919844281875" className="hover:text-gray-700">
                 +91-9844281875
               </a>
             </div>
@@ -34,7 +34,7 @@ const Footer = () => {
               <Image src="/icons/email.png" alt="Email" width={20} height={20} />
               <a
                 href="mailto:tech@globaltechsoftwaresolutions.com"
-                className="hover:text-white"
+                className="hover:text-gray-700"
               >
                 tech@globaltechsoftwaresolutions.com
 
