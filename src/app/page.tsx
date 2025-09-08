@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import ContactPage from "./contact/page";
 import Button from '@/app/button/page';
+import Chatbot from '@/app/chatbot/page';
 
 
 export default function CombinedPage() {
@@ -15,6 +16,7 @@ export default function CombinedPage() {
       <ServicesSection />
       <DigitalMarketingSection />
       <BlogPost />
+      <Chatbot />
       <Button />
       <ContactPage/>
     </>

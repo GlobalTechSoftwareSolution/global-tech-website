@@ -5,6 +5,7 @@ import Head from "next/head";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Button from '@/app/button/page';
+import Chatbot from '@/app/chatbot/page';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +34,7 @@ export default function RootLayout({
       </Head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Navbar/>
+        <Chatbot />
         {children}
         <Button />
         <Footer/>
