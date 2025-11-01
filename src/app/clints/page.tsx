@@ -74,20 +74,41 @@ export default function ClientsPage() {
       logo: "/logo/namma.png",
       name: "Namma Uru Namma Hemme",
       description: "We developed a modern, user-friendly platform for Namma Uru Namma Hemme to promote local heritage, culture, and community initiatives with high engagement and accessibility.",
-      website: "https://namma-uru-namma-hemme.netlify.app/" // replace with actual site
+      website: "https://namma-uru-namma-hemme.netlify.app/" 
     },
     {
       logo: "/logo/fincare.jpg",
       name: "Global Fincare",
       description: "Our team created a secure and scalable financial solutions platform for Global Fincare, enabling smooth transactions, client trust, and compliance with regulatory standards.",
-      website: "https://www.globalfincare.in/" // replace with actual site
+      website: "https://www.globalfincare.in/" 
     },
     {
       logo: "/logo/harvest.png",
       name: "Farm Harvest to Home",
       description: "We built an e-commerce and logistics platform for Farm Harvest to Home, connecting farmers directly to consumers, improving efficiency and ensuring fresh produce delivery.",
-      website: "https://farmharvesttohome.com/" // replace with actual site
-    }
+      website: "https://farmharvesttohome.com/" 
+    },
+     {
+    logo: "/logo/Global.webp",
+    name: "HRMS – Human Resource Management System",
+    description:
+      "Our HRMS platform simplifies workforce management with features like employee onboarding, attendance tracking, payroll automation, and performance monitoring — helping organizations save time and boost productivity.",
+    website: "https://globaltechsoftwaresolutions.cloud/", 
+  },
+  {
+    logo: "/logo/Smart-school.png",
+    name: "School ERP System",
+    description:
+      "School ERP solution that streamlines student information, academics, fees, attendance, and communication — empowering schools to manage operations digitally and efficiently.",
+    website: "https://globaltechsoftwaresolutions.cloud/school/",
+  },
+  {
+    logo: "/logo/agri-care.webp",
+    name: "AgriCare – Agriculture Management Platform",
+    description:
+      "AgriCare connects farmers, suppliers, and consumers through a digital platform that enables efficient farm management, crop monitoring, and direct market access for sustainable growth.",
+    website: "https://globalagricare.com/", 
+  }
   ];
 
   return (

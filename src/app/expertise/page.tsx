@@ -123,7 +123,7 @@ function AboutSection() {
               solutions that are not just technically sound but also aligned with your business objectives.
             </p>
             <Link 
-              href="/about" 
+              href="/about-us" 
               className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold text-lg transition duration-300"
             >
               Learn More About Us

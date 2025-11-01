@@ -21,7 +21,6 @@ function DigitalAgencySection() {
         viewport={{ once: true }}
         className="max-w-5xl mx-auto"
       >
-        <h4 className="text-lg text-blue-600 font-semibold mb-2">Digital Transformation</h4>
         <h2 className="text-4xl md:text-5xl font-extrabold text-orange-600 mb-4">
           Full-Service Digital Agency
         </h2>
