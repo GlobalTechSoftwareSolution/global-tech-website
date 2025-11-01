@@ -41,7 +41,7 @@ export default function FloatingBotpressChat() {
 
         {/* Iframe Chat */}
         <iframe
-          src="https://cdn.botpress.cloud/webchat/v3.2/shareable.html?configUrl=https://files.bpcontent.cloud/2025/09/06/05/20250906054026-8EPDQXM7.json"
+          src="https://cdn.botpress.cloud/webchat/v3.3/shareable.html?configUrl=https://files.bpcontent.cloud/2025/11/01/07/20251101074033-ZZCR98GI.json"
           title="Botpress AI Chat"
           className="w-full h-full border-0"
         />
