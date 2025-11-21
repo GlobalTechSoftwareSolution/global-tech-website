@@ -74,7 +74,7 @@ export default function ClientsPage() {
       logo: "/logo/namma.png",
       name: "Namma Uru Namma Hemme",
       description: "We developed a modern, user-friendly platform for Namma Uru Namma Hemme to promote local heritage, culture, and community initiatives with high engagement and accessibility.",
-      website: "https://namma-uru-namma-hemme.netlify.app/" 
+      website: "https://namma-uru-website.vercel.app/" 
     },
     {
       logo: "/logo/fincare.jpg",
@@ -108,8 +108,22 @@ export default function ClientsPage() {
     description:
       "AgriCare connects farmers, suppliers, and consumers through a digital platform that enables efficient farm management, crop monitoring, and direct market access for sustainable growth.",
     website: "https://globalagricare.com/", 
-  }
-  ];
+  },
+  {
+  logo: "/logo/slvlogo.webp",
+  name: "SLV Borewell Scanning",
+  description:
+    "SLV Borewell Scanning specializes in advanced borewell detection and groundwater exploration using modern geophysical scanning technologies. We help landowners, farmers, and contractors accurately locate water sources, ensuring efficient and reliable borewell drilling.",
+  website: "https://slvborewellscanning.com/", 
+},
+{
+  logo: "/logo/sbk.webp",
+  name: "SBK Gold Company",
+  description:
+    "SBK Gold Company is a trusted provider of high-quality gold jewelry and investment-grade gold products. We offer certified designs, transparent pricing, and reliable services to deliver a safe and premium gold-buying experience.",
+  website: "https://sbk-gold-company.netlify.app/", 
+}
+ ];
 
   return (
     <div className="min-h-screen flex flex-col">
