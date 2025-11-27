@@ -26,8 +26,8 @@ const Footer = () => {
           <div className="space-y-3 text-sm text-gray-700">
             <div className="flex items-center gap-2 text-gray-700">
               <Image src="/icons/phone.png" alt="Phone" width={20} height={20} />
-              <a href="tel:+919844281875" className="hover:text-gray-700">
-                +91-9844281875
+              <a href="tel:+9184958 62494" className="hover:text-gray-700">
+                +91-84958 62494
               </a>
             </div>
             <div className="flex items-center gap-2">
@@ -65,7 +65,7 @@ const Footer = () => {
               <Link href="/contact" className="hover:text-black">Contact</Link>
             </li>
             <li>
-              <Link href="/clints" className="hover:text-black">Services</Link>
+              <Link href="/our-services" className="hover:text-black">Services</Link>
             </li>
           </ul>
         </div>

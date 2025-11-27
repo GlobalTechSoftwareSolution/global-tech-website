@@ -93,14 +93,14 @@ export default function ClientsPage() {
     name: "HRMS – Human Resource Management System",
     description:
       "Our HRMS platform simplifies workforce management with features like employee onboarding, attendance tracking, payroll automation, and performance monitoring — helping organizations save time and boost productivity.",
-    website: "https://globaltechsoftwaresolutions.cloud/", 
+    website: "https://hrms.globaltechsoftwaresolutions.cloud/", 
   },
   {
     logo: "/logo/Smart-school.png",
     name: "School ERP System",
     description:
       "School ERP solution that streamlines student information, academics, fees, attendance, and communication — empowering schools to manage operations digitally and efficiently.",
-    website: "https://globaltechsoftwaresolutions.cloud/school/",
+    website: "https://school.globaltechsoftwaresolutions.cloud/",
   },
   {
     logo: "/logo/agri-care.webp",

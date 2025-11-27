@@ -110,7 +110,7 @@ const HRMSPage = () => {
 
                 <div className="flex flex-col sm:flex-row gap-4">
                    <a
-              href="https://globaltechsoftwaresolutions.cloud/"
+              href="https://hrms.globaltechsoftwaresolutions.cloud/"
                target="_blank"
     rel="noopener noreferrer"
               className="border-2 border-blue-700 bg-blue-700  text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-800 transition-all"
@@ -201,7 +201,7 @@ const HRMSPage = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
                <a
-              href="https://globaltechsoftwaresolutions.cloud/"
+              href="https://hrms.globaltechsoftwaresolutions.cloud/"
                target="_blank"
     rel="noopener noreferrer"
               className="border-2 border-white bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-all"

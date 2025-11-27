@@ -56,7 +56,7 @@ export default function LearnMorePage() {
 
            <div className='mt-5 mb-4'>
              <a
-              href="https://globaltechsoftwaresolutions.cloud/school/"
+              href="https://school.globaltechsoftwaresolutions.cloud/"
                target="_blank"
                 rel="noopener noreferrer"
               className="border-2 border-blue-700 bg-blue-700 text-white px-8 py-4 rounded-lg text-center font-semibold hover:bg-blue-800 transition-all"
@@ -257,7 +257,7 @@ export default function LearnMorePage() {
               Get a Free Demo
             </a>
             <a
-              href="https://globaltechsoftwaresolutions.cloud/school/"
+              href="https://school.globaltechsoftwaresolutions.cloud/"
                target="_blank"
     rel="noopener noreferrer"
               className="border-2 border-blue-700 text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-all"
