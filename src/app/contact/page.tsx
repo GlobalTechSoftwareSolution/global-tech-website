@@ -1,6 +1,5 @@
 "use client"
 import { useState, useRef, FormEvent, useEffect } from "react"
-import emailjs from "@emailjs/browser"
 import { FaCheckCircle, FaExclamationCircle, FaTimes, FaPaperPlane } from "react-icons/fa"
 
 export default function ContactPage() {
@@ -17,8 +16,6 @@ export default function ContactPage() {
     { show: false, message: "", type: "success" }
   )
 
-  const form = useRef<HTMLFormElement>(null)
-
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
@@ -26,39 +23,43 @@ export default function ContactPage() {
     setFormData(prev => ({ ...prev, [name]: value }))
   }
 
-  // ✅ Send with EmailJS
-  const sendEmail = (e: FormEvent<HTMLFormElement>) => {
+  // ✅ Send with our custom API
+  const sendEmail = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (!form.current) return
     
     setIsLoading(true)
 
-    emailjs
-      .sendForm(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string,
-        form.current,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string
-      )
-      .then(() => {
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
         setPopup({
           show: true,
           message: "Thank you for your message! We'll get back to you within 24 hours.",
           type: "success"
         })
         setFormData({ name: "", phone: "", email: "", service: "", message: "" })
+      } else {
+        throw new Error(result.message || "Failed to send message");
+      }
+    } catch (error) {
+      console.error("API error:", error)
+      setPopup({
+        show: true,
+        message: `Error: ${(error as Error).message || "We apologize, but there was an error sending your message. Please try again or contact us directly."}`,
+        type: "error"
       })
-      .catch((error) => {
-        console.error("EmailJS error:", error)
-        setPopup({
-          show: true,
-          message: "We apologize, but there was an error sending your message. Please try again or contact us directly.",
-          type: "error"
-        })
-      })
-      .finally(() => {
-        setIsLoading(false)
-      })
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   useEffect(() => {
@@ -96,7 +97,7 @@ export default function ContactPage() {
           </span>
         </h2>
 
-        <form ref={form} onSubmit={sendEmail} className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <form onSubmit={sendEmail} className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {/* Name */}
           <div className="col-span-2 md:col-span-1">
             <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
