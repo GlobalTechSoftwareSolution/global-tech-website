@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect, useCallback } from "react";
 import ContactPage from "./contact/page";
 import Button from '@/app/button/page';
 import Chatbot from '@/app/chatbot/page';
-import ClientsPage from '@/app/clints/page'
+import ClientsPage from '@/app/clients/page'
 import Blog_post from "./blogPost/page";
 import DigitalShowcase from "@/components/DigitalShowcase";
 import Digitalmarketing from "@/components/Digitalmarketing";

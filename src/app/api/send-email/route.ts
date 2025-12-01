@@ -30,8 +30,8 @@ export async function POST(request: NextRequest) {
       port: 587,
       secure: false, // true for 465, false for other ports
       auth: {
-        user: 'hrglobaltechsoftwaresolutions@gmail.com',
-        pass: 'zmwp hxux yzbp qftd', // Your 16-digit Gmail App Password
+        user: process.env.CONTACT_EMAIL_USER,
+        pass: process.env.CONTACT_EMAIL_PASS,
       },
     });
 

@@ -48,7 +48,7 @@ const Navbar = () => {
             </div>
 
 
-            <Link href="/clints" className="hover:text-blue-600 transition">Our Clients</Link>
+            <Link href="/clients" className="hover:text-blue-600 transition">Our Clients</Link>
             <Link href="/contact" className="hover:text-blue-600 transition">Contact Us</Link>
 
             {/* Call Us Button */}
@@ -90,7 +90,7 @@ const Navbar = () => {
 
             <Link href="/about-us" onClick={() => setMobileMenuOpen(false)} className="block hover:text-blue-600">About Us</Link>
 
-            <Link href="/clints" onClick={() => setMobileMenuOpen(false)} className="block hover:text-blue-600">Our Clients</Link>
+            <Link href="/clients" onClick={() => setMobileMenuOpen(false)} className="block hover:text-blue-600">Our Clients</Link>
 
 
             {/* Mobile Services Dropdown */}
